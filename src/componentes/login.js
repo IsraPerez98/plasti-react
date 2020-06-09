@@ -22,7 +22,7 @@ class Login extends Component {
 
     submit(e) {
         e.preventDefault(); //no recargar la pagina
-        axios.post('/autenticacion/login/', { // hacemos login en express con el usuario y contra
+        axios.post('/autenticacion/login', { // hacemos login en express con el usuario y contra
             usuario: this.state.usuario,
             password: this.state.clave
         })
@@ -30,6 +30,9 @@ class Login extends Component {
             console.log(res.data);
             localStorage.setItem('jwt-acceso', res.data.tokenAcceso);
             localStorage.setItem('jwt-refresco', res.data.tokenRefresco);
+
+            //volvemos al inicio
+            window.location.href = '/';
         })
         .catch( (error, res) => { // algun error
             console.log(error);
@@ -39,13 +42,22 @@ class Login extends Component {
     }
 
     render() {
+        //console.log("props:", this.props);
+        const esta_logeado = this.props.estaLogeado();
         return (
             <div>
-                <form onSubmit={ e => this.submit(e) }>
-                    <label>usuario:</label><input type="text" name="usuario" onChange={e => this.change(e)} value={this.state.usuario}/>
-                    <label>contraseña:</label><input type="password" name="clave" onChange={e => this.change(e)} value={this.state.clave}/>
-                    <button type="submit">Entrar</button>
-                </form>
+            {esta_logeado ? (
+                <div>El Usuario ya ha ingresado</div>
+            )
+            : (
+                <div>
+                    <form onSubmit={ e => this.submit(e) }>
+                        <label>usuario:</label><input type="text" name="usuario" onChange={e => this.change(e)} value={this.state.usuario}/>
+                        <label>contraseña:</label><input type="password" name="clave" onChange={e => this.change(e)} value={this.state.clave}/>
+                        <button type="submit">Entrar</button>
+                    </form>
+                </div>
+            )}
             </div>
         );
     }
