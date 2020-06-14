@@ -43,7 +43,8 @@ class BarraNavegacion extends Component {
                         {esta_logeado ? (
                             [
                                 <li key={0}><button className="boton-logout" onClick={this.logout} >Logout</button></li>,
-                                <li key={1}><Link to={'/registro'} className="nav-link">Registro</Link> </li>
+                                <li key={1}><Link to={'/registro'} className="nav-link">Registro</Link> </li>,
+                                <li key={2}><Link to={'/productos'} className="nav-link">Productos</Link> </li>,
                             ])
                         : (
                             <li><Link to={'/login'} className="nav-link">Login</Link></li>
