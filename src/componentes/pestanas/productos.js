@@ -35,7 +35,7 @@ class Productos extends Component {
         this.state = {
             cargado: false,
             error: null,
-            datos_productos: "", // aqui almacenamos los datos de los productos cuando se llama a la api
+            datos_productos: {}, // aqui almacenamos los datos de los productos cuando se llama a la api
         };
 
         this.obtenerProductosAPI = this.obtenerProductosAPI.bind(this);
@@ -89,7 +89,7 @@ class Productos extends Component {
         const error = this.state.error;
         const productos = this.state.datos_productos;
         
-        if(error) return <div> ERROR {error} </div>
+        if(error) return <div> ERROR {error} </div>;
         if(!esta_logeado) return <div> Debe ingresar con su cuenta para acceder a este panel. </div>;
         if(!cargado) return <div> Cargando... </div>;
 
