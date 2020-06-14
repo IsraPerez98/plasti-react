@@ -31,7 +31,7 @@ class Registro extends Component {
         
         const jwt_acceso = await this.props.ObtenerJWTAcceso();
 
-        console.log("jwt registro: ", jwt_acceso);
+        //console.log("jwt registro: ", jwt_acceso);
         
         axios.post('/autenticacion/registrar', { // registramos en la api
             
@@ -61,7 +61,7 @@ class Registro extends Component {
     }
 
 
-    actualizar_estado(e) { // al cambio de estado
+    actualizar_estado(e) {
         this.setState({
             [e.target.name]: e.target.value , // actualizamos el state del componente con los datos que ingrese el usuario
         })
