@@ -36,9 +36,12 @@ class Productos extends Component {
             cargado: false,
             error: null,
             datos_productos: {}, // aqui almacenamos los datos de los productos cuando se llama a la api
+
+            busqueda: "", // el string de busqueda
         };
 
         this.obtenerProductosAPI = this.obtenerProductosAPI.bind(this);
+        this.actualizar_estado = this.actualizar_estado.bind(this);
     }
 
     async obtenerProductosAPI() { //llamamos a la api y refrescamos los valores
@@ -83,6 +86,12 @@ class Productos extends Component {
         this.obtenerProductosAPI();
     }
 
+    actualizar_estado(e) {
+        this.setState({
+            [e.target.name]: e.target.value , // actualizamos el state del componente con los datos que ingrese el usuario
+        });
+    }
+
     render() {
         const esta_logeado = this.props.estaLogeado();
         const cargado = this.state.cargado;
@@ -96,18 +105,40 @@ class Productos extends Component {
         let componentes_productos = [];
 
         for ( const [indice, producto] of productos.entries() ) {
-            componentes_productos.push(<li key={indice}><BloqueProducto 
-                id={producto["_id"]}
-                nombre={producto.nombre}
-                material={producto.material.nombre}
-                precio={producto.precio_venta}
-                contenido={producto.contenido}
-                unidad_medida={producto.unidad_medida.nombre}
-            /></li>)
+            let mostrar = false;
+
+            const str_busqueda = this.state.busqueda.toLowerCase();
+
+            if(!(str_busqueda)) {
+                mostrar = true; // si no se esta buscando nada
+            } else {
+                if(producto.nombre.toLowerCase().includes(str_busqueda)) mostrar = true;
+                if(producto.material.nombre.toLowerCase().includes(str_busqueda)) mostrar = true;
+                //if(producto.precio_venta.toLowerCase().includes(str_busqueda)); mostrar = true;
+                if(producto.contenido.toLowerCase().includes(str_busqueda)) mostrar = true;
+                if(producto.unidad_medida.nombre.toLowerCase().includes(str_busqueda)) mostrar = true;
+            }
+            
+
+            if(mostrar){
+                componentes_productos.push(<li key={indice}><BloqueProducto 
+                    id={producto["_id"]}
+                    nombre={producto.nombre}
+                    material={producto.material.nombre}
+                    precio={producto.precio_venta}
+                    contenido={producto.contenido}
+                    unidad_medida={producto.unidad_medida.nombre}
+                /></li>)
+            }
         } 
 
         return(
             <div>
+                <label><h1>Productos</h1></label>
+                <div>
+                    <label>Busqueda:</label>
+                    <input type="text" id="busqueda" name="busqueda" value={this.state.busqueda} onChange={e => this.actualizar_estado(e)} />
+                </div>
                 {componentes_productos}
             </div>
         );
