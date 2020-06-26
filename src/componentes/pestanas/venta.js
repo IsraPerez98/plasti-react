@@ -18,14 +18,19 @@ class Venta extends Component {
 
             //estos datos se subiran a la api
             cliente: "",
-            producto: "",
-            cantidad: 0,
-            precio: 0,
+            datos_productos: [{
+                producto: "",
+                cantidad: 0,
+                precio: 0,
+            }],
+            
         }
 
         this.obtenerProductosAPI = this.obtenerProductosAPI.bind(this);
         this.obtenerClientesAPI = this.obtenerClientesAPI.bind(this);
         this.enviar = this.enviar.bind(this);
+        this.agregarNuevoProducto = this.agregarNuevoProducto.bind(this);
+        this.eliminarProducto = this.eliminarProducto.bind(this);
     }
 
     async obtenerProductosAPI() { //llamamos a la api y refrescamos los valores
@@ -124,7 +129,7 @@ class Venta extends Component {
         this.obtenerClientesAPI();
     }
 
-    async enviar(evento) {
+    async enviar(evento) { // se envian los datos a la api
         evento.preventDefault();
 
         const jwt_acceso = await this.props.ObtenerJWTAcceso();
@@ -132,9 +137,7 @@ class Venta extends Component {
         axios.post('/api/transaccion/venta', { // enviamos la venta a la api
             
             cliente: this.state.cliente,
-            producto: this.state.producto,
-            cantidad: this.state.cantidad,
-            precio: this.state.precio,
+            datos_productos: this.state.datos_productos,
         }, {
             headers: {
                 "Authorization" : `Bearer ${jwt_acceso}`,
@@ -156,6 +159,32 @@ class Venta extends Component {
         } )
     }
 
+    agregarNuevoProducto() {
+        this.setState({
+            datos_productos: this.state.datos_productos.concat({
+                producto: "",
+                cantidad: 0,
+                precio: 0,
+            })
+        })
+    }
+
+    eliminarProducto(indice) {
+        let datos_productos = this.state.datos_productos;
+        const eliminar = datos_productos.splice(indice,1);
+        this.setState({
+            datos_productos: datos_productos,
+        })
+    }
+
+    actualizarEstadoOpcionesProductos(indice, evento) {
+        let datos_productos = this.state.datos_productos; // obtenemos los datos actuales del state
+        datos_productos[indice][evento.target.name] = evento.target.value // cambiamos el indice con los valores pasados por el evento
+        this.setState({ // llamamos a setState para actualizar
+            datos_productos: datos_productos,
+        })
+    }
+
     render() {
         const esta_logeado = this.props.estaLogeado();
         const cargado = this.state.productos.cargado && this.state.clientes.cargado;
@@ -169,30 +198,46 @@ class Venta extends Component {
         if(error) return <div> ERROR: {error} </div>;
         if(!cargado) return <div> Cargando .... </div>;
 
-        let clientes_opciones = [];
+        let clientes_opciones = []; // las opciones de los clientes
 
-        for ( const [indice, cliente] of clientes.entries() ) {
+        for ( const [indice, cliente] of clientes.entries() ) { // por cada cliente que envie la api, lo ponemos como opcion
             clientes_opciones.push(<option value={cliente["_id"]}>{cliente.nombre}</option>);
         } 
 
-        let productos_opciones = [];
+        let productos_opciones = []; // las opciones de productos
 
-        for (const [indice, producto] of productos.entries() ) {
+        for (const [indice, producto] of productos.entries() ) { // por todos los productos que envie la api los ponemos como opcion
             productos_opciones.push(<option value={producto["_id"]}>{producto.nombre}</option>);
         }
+
+        let opciones = []; // las opciones respecto a los productos, incluyendo multiples de ellos
+
+        const datos_productos = this.state.datos_productos;
+
+        //console.log("datos_productos ", datos_productos);
+
+        for (let i=0; i<datos_productos.length ; i++) { // por cada producto que el usuario desea agregar
+            const item = datos_productos[i];
+            opciones.push(<div>
+                <label>Producto:</label>
+                    <select name="producto" value={item.producto} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}>
+                        <option value="" disabled>Seleccione un producto ...</option>
+                        {productos_opciones}
+                    </select> 
+                    <input name="cantidad" type="number" value={item.cantidad} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}></input>
+                    <input name="precio" type="number" value={item.precio} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}></input>
+                    <button type="button" onClick={e => this.eliminarProducto(i)}>-</button>
+            </div>);
+        }
+
 
 
         return(
             <div>
                 <form onSubmit={ this.enviar }>
                 <div>
-                    <label>Producto:</label>
-                    <select name="producto" value={this.state.producto} onChange={e => this.actualizar_estado(e)}>
-                        <option value="" disabled>Seleccione un producto ...</option>
-                        {productos_opciones}
-                    </select> 
-                    <input name="cantidad" type="number" value={this.state.cantidad} onChange={e => this.actualizar_estado(e)}></input>
-                    <input name="precio" type="number" value={this.state.precio} onChange={e => this.actualizar_estado(e)}></input>
+                    {opciones}
+                    <button type="button" onClick={this.agregarNuevoProducto}>+</button>
                 </div>
                 <div>
                     <label>Cliente:</label>
