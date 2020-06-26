@@ -216,8 +216,14 @@ class Venta extends Component {
 
         //console.log("datos_productos ", datos_productos);
 
+        let precio_total = 0;
+
         for (let i=0; i<datos_productos.length ; i++) { // por cada producto que el usuario desea agregar
+            
             const item = datos_productos[i];
+            
+            precio_total = precio_total + ( parseInt(item.precio) || 0 );
+
             opciones.push(<div>
                 <label>Producto:</label>
                     <select name="producto" value={item.producto} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}>
@@ -229,7 +235,6 @@ class Venta extends Component {
                     <button type="button" onClick={e => this.eliminarProducto(i)}>-</button>
             </div>);
         }
-
 
 
         return(
@@ -245,6 +250,10 @@ class Venta extends Component {
                         <option value="" disabled>Seleccione un cliente ...</option>
                         {clientes_opciones}
                     </select>
+                </div>
+                <div>
+                    <label>Total: </label>
+                    <label>${precio_total}</label>
                 </div>
                 <button type="submit">Finalizar</button>
                 </form> 
