@@ -61,7 +61,7 @@ class Registro extends Component {
     }
 
 
-    actualizar_estado(e) {
+    actualizarEstado(e) {
         this.setState({
             [e.target.name]: e.target.value , // actualizamos el state del componente con los datos que ingrese el usuario
         })
@@ -75,10 +75,10 @@ class Registro extends Component {
                 
                 <div>
                     <form onSubmit={ e => this.registrar(e) }>
-                        <label>Usuario:</label><input type="text" name="usuario" onChange={e => this.actualizar_estado(e)} value={this.state.usuario}/>
-                        <label>Nombre Formal:</label><input type="text" name="nombre" onChange={e => this.actualizar_estado(e)} value={this.state.nombre}/>
-                        <label>Contraseña:</label><input type="password" name="password" onChange={e => this.actualizar_estado(e)} value={this.state.password}/>
-                        <label>Confirmar Contraseña:</label><input type="password" name="password_confirmar" onChange={e => this.actualizar_estado(e)} value={this.state.password_confirmar}/>
+                        <label>Usuario:</label><input type="text" name="usuario" onChange={e => this.actualizarEstado(e)} value={this.state.usuario}/>
+                        <label>Nombre Formal:</label><input type="text" name="nombre" onChange={e => this.actualizarEstado(e)} value={this.state.nombre}/>
+                        <label>Contraseña:</label><input type="password" name="password" onChange={e => this.actualizarEstado(e)} value={this.state.password}/>
+                        <label>Confirmar Contraseña:</label><input type="password" name="password_confirmar" onChange={e => this.actualizarEstado(e)} value={this.state.password_confirmar}/>
                         <button type="submit">Entrar</button>
                     </form>
                 </div>
