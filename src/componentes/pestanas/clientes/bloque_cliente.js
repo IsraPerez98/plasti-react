@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
+import DialogoEliminarCliente from './dialogo_eliminar_cliente';
 
 class BloqueCliente extends Component { // los bloques que componen cada cliente
     render() {
-        const id = this.props.id;
-        const rut = this.props.rut;
-        const nombre = this.props.nombre;
-        const telefono = this.props.telefono;
-        const email = this.props.email; 
-        const direccion = this.props.direccion;
-        const local = this.props.local;
+        const datos_cliente = this.props.datos_cliente;
+        const id = datos_cliente._id;
+        const rut = datos_cliente.rut;
+        const nombre = datos_cliente.nombre;
+        const telefono = datos_cliente.telefono;
+        const email = datos_cliente.email; 
+        const direccion = datos_cliente.direccion;
+        const local = datos_cliente.local;
 
         return (
             <div>
@@ -20,6 +22,11 @@ class BloqueCliente extends Component { // los bloques que componen cada cliente
                 <li>{email}</li>
                 <li>{direccion}</li>
                 <li>{local}</li>
+                <DialogoEliminarCliente 
+                    datos_cliente = {datos_cliente}
+                    ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}
+                    obtenerClientesAPI={this.props.obtenerClientesAPI}
+                />
                 </ol>
             </div>
         );

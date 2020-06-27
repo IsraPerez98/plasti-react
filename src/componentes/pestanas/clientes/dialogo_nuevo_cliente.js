@@ -64,6 +64,7 @@ class DialogoNuevoCliente extends Component {
             console.log(res.data);
             
             alert("El cliente se ha creado de forma exitosa.");
+
         })
         .catch( (error, res) => { // algun error
             console.log(error);
@@ -76,6 +77,7 @@ class DialogoNuevoCliente extends Component {
             
         } )
 
+        this.props.obtenerClientesAPI();
         this.cerrarModal();
     }
 

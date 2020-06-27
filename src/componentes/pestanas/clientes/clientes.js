@@ -23,6 +23,11 @@ class Clientes extends Component {
 
     async obtenerClientesAPI() { //llamamos a la api y refrescamos los valores
 
+        this.setState({ // mientras no se obtienen los datos, dejamos el state como no cargado
+            cargado: false,
+            error: null,
+        })
+
         const jwt_acceso = await this.props.ObtenerJWTAcceso(); 
         
         axios.get('/api/get/clientes', { // llamamos a la api pidiendo los clientes
@@ -99,13 +104,9 @@ class Clientes extends Component {
 
             if(mostrar){
                 componentes_clientes.push(<li key={indice}><BloqueCliente
-                    id={cliente["_id"]}
-                    rut={cliente.rut}
-                    nombre={cliente.nombre}
-                    telefono={cliente.telefono}
-                    email={cliente.email}
-                    direccion={cliente.direccion}
-                    local={cliente.local}
+                    ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}
+                    obtenerClientesAPI={this.obtenerClientesAPI}
+                    datos_cliente={cliente}
                 /></li>)
             }
         } 
@@ -116,6 +117,7 @@ class Clientes extends Component {
                 <div>
                     <DialogoNuevoCliente
                         ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}
+                        obtenerClientesAPI={this.obtenerClientesAPI}
                     />
                 </div>
                 <div>
