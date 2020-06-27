@@ -8,7 +8,7 @@ import BarraNavegacion from './componentes/navegacion';
 import Login from './componentes/login';
 import Registro from './componentes/registro';
 import Productos from './componentes/pestanas/productos';
-import Clientes from './componentes/pestanas/clientes';
+import Clientes from './componentes/pestanas/clientes/clientes.js';
 import Venta from './componentes/pestanas/venta';
 
 class App extends React.Component {

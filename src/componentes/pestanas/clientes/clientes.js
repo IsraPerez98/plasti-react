@@ -1,31 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-class BloqueCliente extends Component { // los bloques que componen cada cliente
-    render() {
-        const id = this.props.id;
-        const rut = this.props.rut;
-        const nombre = this.props.nombre;
-        const telefono = this.props.telefono;
-        const email = this.props.email; 
-        const direccion = this.props.direccion;
-        const local = this.props.local;
-
-        return (
-            <div>
-                <ol>
-                <li>{id}</li>
-                <li>{rut}</li>
-                <li>{nombre}</li>
-                <li>{telefono}</li>
-                <li>{email}</li>
-                <li>{direccion}</li>
-                <li>{local}</li>
-                </ol>
-            </div>
-        );
-    }
-}
+import BloqueCliente from './bloque_cliente';
+import DialogoNuevoCliente from './dialogo_nuevo_cliente';
 
 class Clientes extends Component {
     constructor(props) {
@@ -41,6 +18,7 @@ class Clientes extends Component {
 
         this.obtenerClientesAPI = this.obtenerClientesAPI.bind(this);
         this.actualizar_estado = this.actualizar_estado.bind(this);
+        
     }
 
     async obtenerClientesAPI() { //llamamos a la api y refrescamos los valores
@@ -124,6 +102,7 @@ class Clientes extends Component {
                     id={cliente["_id"]}
                     rut={cliente.rut}
                     nombre={cliente.nombre}
+                    telefono={cliente.telefono}
                     email={cliente.email}
                     direccion={cliente.direccion}
                     local={cliente.local}
@@ -134,6 +113,11 @@ class Clientes extends Component {
         return(
             <div>
                 <label><h1>Clientes</h1></label>
+                <div>
+                    <DialogoNuevoCliente
+                        ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}
+                    />
+                </div>
                 <div>
                     <label>Busqueda:</label>
                     <input type="text" id="busqueda" name="busqueda" value={this.state.busqueda} onChange={e => this.actualizar_estado(e)} />
