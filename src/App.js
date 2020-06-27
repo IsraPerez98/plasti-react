@@ -8,6 +8,7 @@ import BarraNavegacion from './componentes/navegacion';
 import Login from './componentes/login';
 import Registro from './componentes/registro';
 import Productos from './componentes/pestanas/productos';
+import Clientes from './componentes/pestanas/clientes';
 import Venta from './componentes/pestanas/venta';
 
 class App extends React.Component {
@@ -95,6 +96,14 @@ class App extends React.Component {
               path="/productos" 
               render={(props) => 
                 <Productos
+                  estaLogeado={this.estaLogeado} 
+                  ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
+                /> }
+            />
+            <Route 
+              path="/clientes" 
+              render={(props) => 
+                <Clientes
                   estaLogeado={this.estaLogeado} 
                   ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
                 /> }
