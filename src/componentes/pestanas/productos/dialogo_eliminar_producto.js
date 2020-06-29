@@ -4,26 +4,24 @@ import axios from 'axios';
 
 import DialogoEliminar from '../../dialogo_eliminar';
 
-class DialogoEliminarCliente extends Component {
+class DialogoEliminarProducto extends Component {
     //se le pasa this.props.obtenerJWTAcceso
-    // this.props.recargarDatos para recargar los datos de los clientes una vez borrado
-    // this.props.datos_cliente que tiene los datos del cliente
+    // this.props.recargarDatos para recargar los datos de los productos una vez borrado
+    // this.props.datos_producto que tiene los datos del producto
 
-    constructor(props) {
+    constructor(props){
         super(props);
 
-        this.eliminarCliente = this.eliminarCliente.bind(this);
+        this.eliminarProducto = this.eliminarProducto.bind(this);
     }
 
-    async eliminarCliente() {
+    async eliminarProducto() {
     
         const jwt_acceso = await this.props.ObtenerJWTAcceso();
-
-        //console.log("eliminar cliente ", jwt_acceso);
     
-        axios.delete('/api/delete/cliente/', { // llamamos a la api
+        axios.delete('/api/delete/producto/', { // llamamos a la api
             data: { 
-                cliente: this.props.datos_cliente._id,
+                producto: this.props.datos_producto._id,
             },
             
             headers: {
@@ -33,10 +31,9 @@ class DialogoEliminarCliente extends Component {
         .then( res => {
             console.log(res.data);
 
-            //recargamos los datos correspondiente a las personas
             this.props.recargarDatos();
             
-            alert("El cliente se ha eliminado de forma exitosa.");
+            alert("El producto se ha eliminado de forma exitosa.");
         })
         .catch( (error, res) => { // algun error
             console.log(error);
@@ -52,15 +49,15 @@ class DialogoEliminarCliente extends Component {
 
     render() {
 
-        const datos_cliente = this.props.datos_cliente;
+        const datos_producto = this.props.datos_producto;
 
         return (
             <DialogoEliminar
-                funcionEliminar={this.eliminarCliente}
-                windowConfirm={`Desea eliminar al cliente:\n${datos_cliente._id}\n${datos_cliente.rut} \n${datos_cliente.nombre}`}
+                funcionEliminar={this.eliminarProducto}
+                windowConfirm={`Desea eliminar el producto:\n${datos_producto._id}\n${datos_producto.nombre}`}
             />
         )
     }
 }
 
-export default DialogoEliminarCliente;
+export default DialogoEliminarProducto;

@@ -1,32 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-class BloqueProducto extends Component { // los bloques que componen cada producto
-    render() {
-        const id = this.props.id;
-        const nombre = this.props.nombre;
-        const material = this.props.material;
-        const precio = this.props.precio; 
-        const contenido = this.props.contenido;
-        const unidad_medida = this.props.unidad_medida;
-        const cantidad = this.props.cantidad;
-
-
-        return (
-            <div>
-                <ol>
-                <li>{id}</li>
-                <li>{nombre}</li>
-                <li>{material}</li>
-                <li>{precio}</li>
-                <li>{contenido}</li>
-                <li>{unidad_medida}</li>
-                <li>{cantidad}</li>
-                </ol>
-            </div>
-        );
-    }
-}
+import BloqueProducto from './bloque_producto';
 
 class Productos extends Component {
     constructor(props) {
@@ -45,6 +20,11 @@ class Productos extends Component {
     }
 
     async obtenerProductosAPI() { //llamamos a la api y refrescamos los valores
+
+        this.setState({ // mientras se llama a la api se deja como cargando
+            cargado: false,
+            error: null,
+        })
 
         const jwt_acceso = await this.props.ObtenerJWTAcceso(); 
 
@@ -122,12 +102,10 @@ class Productos extends Component {
 
             if(mostrar){
                 componentes_productos.push(<li key={indice}><BloqueProducto 
-                    id={producto["_id"]}
-                    nombre={producto.nombre}
-                    material={producto.material.nombre}
-                    precio={producto.precio_venta}
-                    contenido={producto.contenido}
-                    unidad_medida={producto.unidad_medida.nombre}
+                    datos_producto={producto}
+
+                    recargarDatos={this.obtenerProductosAPI}
+                    ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}
                 /></li>)
             }
         } 

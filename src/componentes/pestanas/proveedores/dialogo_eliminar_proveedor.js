@@ -4,26 +4,24 @@ import axios from 'axios';
 
 import DialogoEliminar from '../../dialogo_eliminar';
 
-class DialogoEliminarCliente extends Component {
+class DialogoEliminarProveedor extends Component {
     //se le pasa this.props.obtenerJWTAcceso
-    // this.props.recargarDatos para recargar los datos de los clientes una vez borrado
-    // this.props.datos_cliente que tiene los datos del cliente
+    // this.props.recargarDatos para recargar los datos de los proveedores una vez borrado
+    // this.props.datos_proveedor que tiene los datos del proveedor
 
     constructor(props) {
         super(props);
 
-        this.eliminarCliente = this.eliminarCliente.bind(this);
+        this.eliminarProveedor = this.eliminarProveedor.bind(this);
     }
 
-    async eliminarCliente() {
+    async eliminarProveedor() {
     
         const jwt_acceso = await this.props.ObtenerJWTAcceso();
-
-        //console.log("eliminar cliente ", jwt_acceso);
     
-        axios.delete('/api/delete/cliente/', { // llamamos a la api
+        axios.delete('/api/delete/proveedor/', { // llamamos a la api
             data: { 
-                cliente: this.props.datos_cliente._id,
+                proveedor: this.props.datos_proveedor._id,
             },
             
             headers: {
@@ -36,7 +34,7 @@ class DialogoEliminarCliente extends Component {
             //recargamos los datos correspondiente a las personas
             this.props.recargarDatos();
             
-            alert("El cliente se ha eliminado de forma exitosa.");
+            alert("El proveedor se ha eliminado de forma exitosa.");
         })
         .catch( (error, res) => { // algun error
             console.log(error);
@@ -52,15 +50,15 @@ class DialogoEliminarCliente extends Component {
 
     render() {
 
-        const datos_cliente = this.props.datos_cliente;
+        const datos_proveedor = this.props.datos_proveedor;
 
         return (
             <DialogoEliminar
-                funcionEliminar={this.eliminarCliente}
-                windowConfirm={`Desea eliminar al cliente:\n${datos_cliente._id}\n${datos_cliente.rut} \n${datos_cliente.nombre}`}
+                funcionEliminar={this.eliminarProveedor}
+                windowConfirm={`Desea eliminar al proveedor:\n${datos_proveedor._id}\n${datos_proveedor.rut} \n${datos_proveedor.nombre}`}
             />
         )
     }
 }
 
-export default DialogoEliminarCliente;
+export default DialogoEliminarProveedor;

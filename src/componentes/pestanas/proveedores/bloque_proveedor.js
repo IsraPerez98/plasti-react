@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import DialogoEliminarCliente from './dialogo_eliminar_cliente';
+import DialogoEliminarProveedor from './dialogo_eliminar_proveedor';
 
-class BloqueCliente extends Component { // los bloques que componen cada cliente
+class BloqueProveedor extends Component { // los bloques que componen cada proveedor
     render() {
 
         const datos_persona = this.props.datos_persona;
@@ -23,8 +23,8 @@ class BloqueCliente extends Component { // los bloques que componen cada cliente
             <div>
                 <ol>
                 {datos_lista}
-                <DialogoEliminarCliente
-                    datos_cliente = {datos_persona}
+                <DialogoEliminarProveedor
+                    datos_proveedor = {datos_persona}
                     ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}
                     recargarDatos={this.props.recargarDatos}
                 />
@@ -34,4 +34,4 @@ class BloqueCliente extends Component { // los bloques que componen cada cliente
     }
 }
 
-export default BloqueCliente;
+export default BloqueProveedor;

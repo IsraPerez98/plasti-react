@@ -1,27 +1,27 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-import BloqueCliente from './bloque_cliente';
-import DialogoNuevoCliente from './dialogo_nuevo_cliente';
+import BloqueProveedor from './bloque_proveedor';
+import DialogoNuevoProveedor from './dialogo_nuevo_proveedor';
 
-class Clientes extends Component {
+class Proveedores extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             cargado: false,
             error: null,
-            datos_clientes: {}, // aqui almacenamos los datos de los clientes cuando se llama a la api
+            datos_proveedores: {}, // aqui almacenamos los datos de los proveedores cuando se llama a la api
 
             busqueda: "", // el string de busqueda
         };
 
-        this.obtenerClientesAPI = this.obtenerClientesAPI.bind(this);
-        this.actualizar_estado = this.actualizar_estado.bind(this);
+        this.obtenerProveedoresAPI = this.obtenerProveedoresAPI.bind(this);
+        this.actualizarEstado = this.actualizarEstado.bind(this);
         
     }
 
-    async obtenerClientesAPI() { //llamamos a la api y refrescamos los valores
+    async obtenerProveedoresAPI() { //llamamos a la api y refrescamos los valores
 
         this.setState({ // mientras no se obtienen los datos, dejamos el state como no cargado
             cargado: false,
@@ -30,18 +30,18 @@ class Clientes extends Component {
 
         const jwt_acceso = await this.props.ObtenerJWTAcceso(); 
         
-        axios.get('/api/get/clientes', { // llamamos a la api pidiendo los clientes
+        axios.get('/api/get/proveedores', { // llamamos a la api pidiendo los clientes
             headers: {
                 "Authorization" : `Bearer ${jwt_acceso}`,
             }
         })
         .then( res => {
-            const clientes = res.data;
+            const proveedores = res.data;
             
             //console.log(clientes);
             this.setState({ // seteamos el estado del componente con los datos de la api
                 cargado: true,
-                datos_clientes: clientes,
+                datos_proveedores: proveedores,
             });
         })
         .catch( (error, res) => { // algun error
@@ -63,10 +63,10 @@ class Clientes extends Component {
     }
 
     componentDidMount() { // cuando se monte el componenete llamamos a la api
-        this.obtenerClientesAPI();
+        this.obtenerProveedoresAPI();
     }
 
-    actualizar_estado(e) {
+    actualizarEstado(e) {
         this.setState({
             [e.target.name]: e.target.value , // actualizamos el state del componente con los datos que ingrese el usuario
         });
@@ -76,7 +76,7 @@ class Clientes extends Component {
         const esta_logeado = this.props.estaLogeado();
         const cargado = this.state.cargado;
         const error = this.state.error;
-        const clientes = this.state.datos_clientes;
+        const proveedores = this.state.datos_proveedores;
 
         //console.log("error: ", error);
         
@@ -84,9 +84,9 @@ class Clientes extends Component {
         if(!(esta_logeado)) return( <div> Debe ingresar con su cuenta para acceder a este panel. </div> );
         if(!(cargado)) return( <div> Cargando... </div> );
 
-        let componentes_clientes = [];
+        let componentes_proveedores = [];
 
-        for ( const [indice, cliente] of clientes.entries() ) {
+        for ( const [indice, proveedor] of proveedores.entries() ) {
             let mostrar = false;
 
             const str_busqueda = this.state.busqueda.toLowerCase();
@@ -94,41 +94,41 @@ class Clientes extends Component {
             if(!(str_busqueda)) {
                 mostrar = true; // si no se esta buscando nada
             } else {
-                if(cliente.rut && cliente.rut.toLowerCase().includes(str_busqueda)) mostrar = true;
-                if(cliente.nombre && cliente.nombre.toLowerCase().includes(str_busqueda)) mostrar = true;
-                if(cliente.email && cliente.email.toLowerCase().includes(str_busqueda)) mostrar = true;
-                if(cliente.direccion && cliente.direccion.toLowerCase().includes(str_busqueda)) mostrar = true;
-                if(cliente.local && cliente.local.toLowerCase().includes(str_busqueda)) mostrar = true;
+                if(proveedor.rut && proveedor.rut.toLowerCase().includes(str_busqueda)) mostrar = true;
+                else if(proveedor.nombre && proveedor.nombre.toLowerCase().includes(str_busqueda)) mostrar = true;
+                else if(proveedor.email && proveedor.email.toLowerCase().includes(str_busqueda)) mostrar = true;
+                else if(proveedor.direccion && proveedor.direccion.toLowerCase().includes(str_busqueda)) mostrar = true;
+                else if(proveedor.pagina_web && proveedor.pagina_web.toLowerCase().includes(str_busqueda)) mostrar = true;
             }
             
 
             if(mostrar){
-                componentes_clientes.push(<li key={indice}><BloqueCliente
+                componentes_proveedores.push(<li key={indice}><BloqueProveedor
                     ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}
-                    recargarDatos={this.obtenerClientesAPI}
-                    datos_persona={cliente}
-                    tipo_persona="cliente"
+                    recargarDatos={this.obtenerProveedoresAPI}
+                    datos_persona={proveedor}
+                    tipo_persona={"proveedor"}
                 /></li>)
             }
         } 
 
         return(
             <div>
-                <label><h1>Clientes</h1></label>
+                <label><h1>Proveedores</h1></label>
                 <div>
-                    <DialogoNuevoCliente
+                    <DialogoNuevoProveedor
                         ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}
-                        obtenerClientesAPI={this.obtenerClientesAPI}
+                        obtenerProveedoresAPI={this.obtenerProveedoresAPI}
                     />
                 </div>
                 <div>
                     <label>Busqueda:</label>
-                    <input type="text" id="busqueda" name="busqueda" value={this.state.busqueda} onChange={e => this.actualizar_estado(e)} />
+                    <input type="text" id="busqueda" name="busqueda" value={this.state.busqueda} onChange={e => this.actualizarEstado(e)} />
                 </div>
-                {componentes_clientes}
+                {componentes_proveedores}
             </div>
         );
     }
 }
 
-export default Clientes;
+export default Proveedores;
