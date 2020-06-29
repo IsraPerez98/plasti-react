@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-//import ReactModal from 'react-modal';
 
 class DialogoEliminar extends Component {
     // se le pasa this.props.funcionEliminar que es la funcion que se ejecuta al hacer click en aceptar

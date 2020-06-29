@@ -171,7 +171,7 @@ class Venta extends Component {
 
     eliminarProducto(indice) {
         let datos_productos = this.state.datos_productos;
-        const eliminar = datos_productos.splice(indice,1);
+        datos_productos.splice(indice,1);
         this.setState({
             datos_productos: datos_productos,
         })
