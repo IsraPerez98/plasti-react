@@ -14,11 +14,11 @@ class DialogoNuevoProducto extends Component {
             modalAbierto: false, // si esta abierto este dialogo o esta oculto
 
             nombre: "",
-            cantidad: "",
+            cantidad: "0", // cantidad inicial defecto 0
             material: "",
-            precio_venta: "",
+            precio_venta: "0",
             contenido: "",
-            unidad_medida: "",
+            unidad_medida: "", 
 
 
         }
