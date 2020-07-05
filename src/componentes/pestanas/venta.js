@@ -20,8 +20,8 @@ class Venta extends Component {
             cliente: "",
             datos_productos: [{
                 producto: "",
-                cantidad: 0,
-                precio: 0,
+                cantidad: "1",
+                precio: "0",
             }],
             
         }
@@ -163,8 +163,8 @@ class Venta extends Component {
         this.setState({
             datos_productos: this.state.datos_productos.concat({
                 producto: "",
-                cantidad: 0,
-                precio: 0,
+                cantidad: "1",
+                precio: "0",
             })
         })
     }
@@ -177,10 +177,31 @@ class Venta extends Component {
         })
     }
 
+    buscarProductoID(objectID) { // retorna el producto con el objectID indicado
+        const datos_productos = this.state.productos.datos;
+        //console.log({datos_productos});
+        for(let i=0; i<datos_productos.length; i++) {
+            if(datos_productos[i]._id === objectID) return datos_productos[i];
+        }
+    }
+
     actualizarEstadoOpcionesProductos(indice, evento) {
         let datos_productos = this.state.datos_productos; // obtenemos los datos actuales del state
-        datos_productos[indice][evento.target.name] = evento.target.value // cambiamos el indice con los valores pasados por el evento
+        let dato_a_actualizar = datos_productos[indice];
+        dato_a_actualizar[evento.target.name] = evento.target.value // cambiamos el indice con los valores pasados por el evento
+        
+        // si estamos cambiando el producto o la cantidad, el precio de la venta se cambia automatico a (precio x cantidad)
+        if((evento.target.name === "producto" || evento.target.name === "cantidad") && !isNaN(dato_a_actualizar.cantidad)  ) {
+            const producto = this.buscarProductoID(dato_a_actualizar.producto); //obtenemos el producto como objeto
+
+            dato_a_actualizar.precio = dato_a_actualizar.cantidad * producto.precio_venta;
+        }
+        
         this.setState({ // llamamos a setState para actualizar
+
+            
+            
+
             datos_productos: datos_productos,
         })
     }
