@@ -118,7 +118,7 @@ class Clientes extends Component {
                 <div>
                     <DialogoNuevoCliente
                         ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}
-                        obtenerClientesAPI={this.obtenerClientesAPI}
+                        recargarDatos={this.obtenerClientesAPI}
                     />
                 </div>
                 <div>

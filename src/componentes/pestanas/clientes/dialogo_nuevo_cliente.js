@@ -62,6 +62,8 @@ class DialogoNuevoCliente extends Component {
         })
         .then( res => {
             console.log(res.data);
+
+            this.props.recargarDatos();
             
             alert("El cliente se ha creado de forma exitosa.");
 
@@ -77,7 +79,7 @@ class DialogoNuevoCliente extends Component {
             
         } )
 
-        this.props.obtenerClientesAPI();
+        //this.props.obtenerClientesAPI();
         this.cerrarModal();
     }
 
