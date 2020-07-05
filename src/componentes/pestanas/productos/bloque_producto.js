@@ -7,10 +7,6 @@ class BloqueProducto extends Component { // los bloques que componen cada produc
 
         const datos_producto = this.props.datos_producto;
 
-        // esto de abajo es porque si lo dejo como esta react se crashea
-        if(datos_producto.material && datos_producto.material.nombre) datos_producto.material = datos_producto.material.nombre;
-        if(datos_producto.unidad_medida && datos_producto.unidad_medida.nombre) datos_producto.unidad_medida = datos_producto.unidad_medida.nombre;
-
         
         let datos_lista = [];
 

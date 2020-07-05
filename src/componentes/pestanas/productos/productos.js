@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 import BloqueProducto from './bloque_producto';
+import DialogoNuevoProducto from './dialogo_nuevo_producto';
 
 class Productos extends Component {
     constructor(props) {
@@ -93,10 +94,10 @@ class Productos extends Component {
                 mostrar = true; // si no se esta buscando nada
             } else {
                 if(producto.nombre && producto.nombre.toLowerCase().includes(str_busqueda)) mostrar = true;
-                if(producto.material && producto.material.nombre && producto.material.nombre.toLowerCase().includes(str_busqueda)) mostrar = true;
-                //if(producto.precio_venta.toLowerCase().includes(str_busqueda)); mostrar = true;
-                if(producto.contenido && producto.contenido.toLowerCase().includes(str_busqueda)) mostrar = true;
-                if(producto.unidad_medida && producto.unidad_medida.nombre.toLowerCase().includes(str_busqueda)) mostrar = true;
+                else if(producto.material && producto.material.toLowerCase().includes(str_busqueda)) mostrar = true;
+                //else if(producto.precio_venta.toLowerCase().includes(str_busqueda)); mostrar = true;
+                else if(producto.contenido && producto.contenido.toLowerCase().includes(str_busqueda)) mostrar = true;
+                else if(producto.unidad_medida && producto.unidad_medida.toLowerCase().includes(str_busqueda)) mostrar = true;
             }
             
 
@@ -116,6 +117,10 @@ class Productos extends Component {
                 <div>
                     <label>Busqueda:</label>
                     <input type="text" id="busqueda" name="busqueda" value={this.state.busqueda} onChange={e => this.actualizar_estado(e)} />
+                    <DialogoNuevoProducto
+                        ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}
+                        recargarDatos={this.obtenerProductosAPI}
+                    />
                 </div>
                 {componentes_productos}
             </div>
