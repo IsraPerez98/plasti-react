@@ -14,6 +14,7 @@ class DialogoNuevoProducto extends Component {
             modalAbierto: false, // si esta abierto este dialogo o esta oculto
 
             nombre: "",
+            cantidad: "",
             material: "",
             precio_venta: "",
             contenido: "",
@@ -54,6 +55,7 @@ class DialogoNuevoProducto extends Component {
         axios.post('/api/nuevo/producto/', { // registramos en la api
             
             nombre: this.state.nombre,
+            cantidad: this.state.cantidad,
             material: this.state.material,
             precio_venta: this.state.precio_venta,
             contenido: this.state.contenido,
@@ -95,6 +97,7 @@ class DialogoNuevoProducto extends Component {
                 <ReactModal contentLabel="Nuevo Producto" isOpen={this.state.modalAbierto}>
                     <form onSubmit={ e => this.enviarNuevoProducto(e) }>
                         <label>Nombre del Producto:</label><input type="text" name="nombre" onChange={e => this.actualizarEstado(e)} value={this.state.nombre}/>
+                        <label>Cantidad Inicial:</label><input type="number" name="cantidad" onChange={e => this.actualizarEstado(e)} value={this.state.cantidad}/>
                         <label>Material:</label><input type="text" name="material" onChange={e => this.actualizarEstado(e)} value={this.state.material}/>
                         <label>Precio de Venta:</label><input type="number" name="precio_venta" onChange={e => this.actualizarEstado(e)} value={this.state.precio_venta}/>
                         <label>Contenido:</label><input type="text" name="contenido" onChange={e => this.actualizarEstado(e)} value={this.state.contenido}/>
