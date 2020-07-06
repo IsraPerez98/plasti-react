@@ -1,17 +1,26 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import ReactModal from 'react-modal';
 
-class Registro extends Component {
+class DialogoNuevoUsuario extends Component {
+    // se le pasa this.props.ObtenerJWTAcceso()
+    // y this.props.recargarDatos()
+
     constructor(props) {
         super(props);
 
         this.state = {
+            modalAbierto: false, // si el dialogo esta abierto o no
+
             usuario: "",
             nombre: "",
             password: "",
             password_confirmar: ""
         };
 
+        this.abrirModal = this.abrirModal.bind(this);
+        this.cerrarModal = this.cerrarModal.bind(this);
+        this.actualizarEstado = this.actualizarEstado.bind(this);
         this.registrar = this.registrar.bind(this);
 
     }
@@ -45,6 +54,9 @@ class Registro extends Component {
         })
         .then( res => {
             console.log(res.data);
+
+            this.cerrarModal();
+            this.props.recargarDatos();
             
             alert("El usuario se ha creado de forma exitosa.");
         })
@@ -60,6 +72,18 @@ class Registro extends Component {
         } )
     }
 
+    abrirModal() {
+        this.setState({
+            modalAbierto: true,
+        })
+    }
+
+    cerrarModal() {
+        this.setState({
+            modalAbierto: false,
+        })
+    }
+
 
     actualizarEstado(e) {
         this.setState({
@@ -68,27 +92,22 @@ class Registro extends Component {
     }
 
     render() {
-        const esta_logeado = this.props.estaLogeado();
         return (
             <div>
-            {esta_logeado ? (
-                
-                <div>
+                <button type="button" onClick={this.abrirModal}>Nuevo Usuario</button>
+                <ReactModal contentLabel="Nuevo Usuario" isOpen={this.state.modalAbierto}>
                     <form onSubmit={ e => this.registrar(e) }>
                         <label>Usuario:</label><input type="text" name="usuario" onChange={e => this.actualizarEstado(e)} value={this.state.usuario}/>
                         <label>Nombre Formal:</label><input type="text" name="nombre" onChange={e => this.actualizarEstado(e)} value={this.state.nombre}/>
                         <label>Contraseña:</label><input type="password" name="password" onChange={e => this.actualizarEstado(e)} value={this.state.password}/>
                         <label>Confirmar Contraseña:</label><input type="password" name="password_confirmar" onChange={e => this.actualizarEstado(e)} value={this.state.password_confirmar}/>
-                        <button type="submit">Entrar</button>
+                        <button type="submit">Registrar</button>
                     </form>
-                </div>
-            )
-            : (
-                <div>Debe ingresar con su cuenta para registrar un nuevo usuario.</div>
-            )}
+                    <button type="button" onClick={this.cerrarModal}>Cancelar</button>
+                </ReactModal>
             </div>
         );
     }
 }
 
-export default Registro;
+export default DialogoNuevoUsuario;

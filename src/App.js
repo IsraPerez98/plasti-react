@@ -6,7 +6,8 @@ import './App.css';
 
 import BarraNavegacion from './componentes/navegacion';
 import Login from './componentes/login';
-import Registro from './componentes/registro';
+import Usuarios from './componentes/pestanas/usuarios/usuarios';
+//import Registro from './componentes/registro';
 import Productos from './componentes/pestanas/productos/productos';
 import Clientes from './componentes/pestanas/clientes/clientes.js';
 import Proveedores from './componentes/pestanas/proveedores/proveedores.js';
@@ -86,9 +87,9 @@ class App extends React.Component {
                 />}
             />
             <Route 
-              path="/registro" 
+              path="/usuarios" 
               render={(props) => 
-                <Registro 
+                <Usuarios
                   estaLogeado={this.estaLogeado} 
                   ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
                 /> }
