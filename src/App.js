@@ -12,6 +12,7 @@ import Productos from './componentes/pestanas/productos/productos';
 import Clientes from './componentes/pestanas/clientes/clientes.js';
 import Proveedores from './componentes/pestanas/proveedores/proveedores.js';
 import Venta from './componentes/pestanas/venta';
+import Compra from './componentes/pestanas/compra';
 
 class App extends React.Component {
 
@@ -114,6 +115,14 @@ class App extends React.Component {
               path="/proveedores" 
               render={(props) => 
                 <Proveedores
+                  estaLogeado={this.estaLogeado} 
+                  ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
+                /> }
+            />
+            <Route 
+              path="/compra" 
+              render={(props) => 
+                <Compra
                   estaLogeado={this.estaLogeado} 
                   ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
                 /> }
