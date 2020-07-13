@@ -91,11 +91,14 @@ class Productos extends Component {
             if(!(str_busqueda)) {
                 mostrar = true; // si no se esta buscando nada
             } else {
-                if(producto.nombre && producto.nombre.toLowerCase().includes(str_busqueda)) mostrar = true;
-                else if(producto.material && producto.material.toLowerCase().includes(str_busqueda)) mostrar = true;
-                //else if(producto.precio_venta.toLowerCase().includes(str_busqueda)); mostrar = true;
-                else if(producto.contenido && producto.contenido.toLowerCase().includes(str_busqueda)) mostrar = true;
-                else if(producto.unidad_medida && producto.unidad_medida.toLowerCase().includes(str_busqueda)) mostrar = true;
+                if(
+                    (producto.nombre && producto.nombre.toLowerCase().includes(str_busqueda)) ||
+                    (producto.material && producto.material.toLowerCase().includes(str_busqueda)) ||
+                    (producto.contenido && producto.contenido.toLowerCase().includes(str_busqueda)) ||
+                    (producto.unidad_medida && producto.unidad_medida.toLowerCase().includes(str_busqueda))
+                ) {
+                    mostrar = true;
+                }
             }
             
 
