@@ -1,0 +1,107 @@
+$color-celeste: #57AAE5;
+$altura-barra: 50px;
+
+.espacio-barra-superior {
+    width: 100%;
+    height: $altura-barra;
+    background-color: $color-celeste;
+}
+
+.barra-superior {
+    height: $altura-barra;
+    width: 100%;
+    background-color: $color-celeste;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    .Collapsible {
+        margin-right: 20px;
+        margin-left: auto;
+
+
+        .boton-usuario {
+            margin: 0;
+            height: $altura-barra;
+            &:hover {
+                cursor: pointer;
+            }
+
+            .nombre-usuario {
+                margin-top: 0;
+                margin-bottom: 0; 
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 25px;
+                line-height: $altura-barra;
+                
+                color: #FFFFFF;
+            }
+        }
+
+        .menu-usuario {
+            background-color: $color-celeste;
+            width: 200px;
+
+            .boton-usuarios {
+                color: transparent;
+                margin: 2px;
+                border: 0px;
+                height: 50px;
+
+                p {
+                    margin: 0;
+                    border: 0;
+                    height: 50px;
+
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 25px;
+                    line-height: 29px;
+                    
+                    color: #FFFFFF;
+                }
+            }
+
+            .boton-logout {
+                height: 100%;
+                color: transparent;
+                background-color: transparent;
+                margin: 2px;
+                border: 0px;
+                cursor:pointer;
+
+                &:focus {
+                    outline: 0;
+                    outline-style:none;
+                    outline-width:0;
+                }
+
+                &:active {
+                    outline: 0;
+                    outline-style:none;
+                    outline-width:0;
+                }
+
+                p {
+                    margin: 0;
+                    border: 0;
+
+                    height: 100%;
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 25px;
+                    line-height: 29px;
+                    
+                    color: #FFFFFF;
+                }
+            }
+        }
+    }
+}

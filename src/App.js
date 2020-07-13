@@ -4,6 +4,7 @@ import axios from 'axios';
 import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 
+import BarraSuperior from './componentes/barra_superior';
 import BarraNavegacion from './componentes/navegacion';
 
 import Login from './componentes/login';
@@ -84,6 +85,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <BrowserRouter>
+            <BarraSuperior
+              estaLogeado={this.estaLogeado}
+            />
             <BarraNavegacion estaLogeado={this.estaLogeado} />
             {/* https://tylermcginnis.com/react-router-pass-props-to-components/ */}
             <Route 
