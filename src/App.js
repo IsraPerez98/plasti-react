@@ -82,6 +82,14 @@ class App extends React.Component {
   }
 
   render(){
+    const esta_logeado = this.estaLogeado();
+    if(!(esta_logeado)) return (
+        <div className="App">
+            <Login
+                estaLogeado={this.estaLogeado}
+            />
+        </div>
+    )
     return (
       <div className="App">
         <BrowserRouter>
