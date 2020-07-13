@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
+import '../sass/navegacion.scss';
 
 class BarraNavegacion extends Component {
     constructor(props) {
@@ -36,23 +38,84 @@ class BarraNavegacion extends Component {
         console.log("esta logeado: ", esta_logeado);
 
         return (
-            <div>
-                <nav className="navbart">
-                    <ul className="navbar-nav">
-                        <li><Link to={'/'} className="nav-link"> Inicio </Link></li>
+            <div className="barra-navegacion">
+                <nav className="navbar">
+                    <ul className="lista-navegacion">
+                        <li>
+                            <NavLink 
+                                exact to={'/'} 
+                                activeStyle={{ color: '#3F3F3F' }}
+                                className="nav-link">
+                                    <p>Inicio</p>
+                            </NavLink>
+                        </li>
                         {esta_logeado ? (
                             [
-                                <li key={0}><button className="boton-logout" onClick={this.logout} >Logout</button></li>,
-                                <li key={1}><Link to={'/usuarios'} className="nav-link">Usuarios</Link> </li>,
-                                <li key={2}><Link to={'/productos'} className="nav-link">Productos</Link> </li>,
-                                <li key={3}><Link to={'/clientes'} className="nav-link">Clientes</Link> </li>,
-                                <li key={4}><Link to={'/proveedores'} className="nav-link">Proveedores</Link> </li>,
-                                <li key={5}><Link to={'/compra'} className="nav-link">Compra</Link> </li>,
-                                <li key={6}><Link to={'/venta'} className="nav-link">Venta</Link> </li>,
-                                <li key={7}><Link to={'/registros'} className="nav-link">Registros</Link> </li>,
+                                <li key={1}>
+                                    <NavLink 
+                                        to={'/usuarios'} 
+                                        className="nav-link">
+                                            <p>Usuarios</p>
+                                        </NavLink> 
+                                </li>,
+                                <li key={2}>
+                                    <NavLink 
+                                        to={'/productos'} 
+                                        className="nav-link">
+                                            <p>Productos</p>
+                                    </NavLink> 
+                                </li>,
+                                <li key={3}>
+                                    <NavLink 
+                                        to={'/clientes'}
+                                        className="nav-link">
+                                            <p>Clientes</p>
+                                    </NavLink> </li>,
+                                <li key={4}>
+                                    <NavLink
+                                        to={'/proveedores'}
+                                        className="nav-link">
+                                            <p>Proveedores</p>
+                                    </NavLink>
+                                </li>,
+                                <li key={5}>
+                                    <NavLink 
+                                        to={'/compra'}
+                                        className="nav-link">
+                                            <p>Compra</p>
+                                    </NavLink>
+                                </li>,
+                                <li key={6}>
+                                    <NavLink
+                                        to={'/venta'}
+                                        className="nav-link">
+                                            <p>Venta</p>
+                                    </NavLink>
+                                </li>,
+                                <li key={7}>
+                                    <NavLink 
+                                        to={'/registros'}
+                                        className="nav-link">
+                                            <p>Registros</p>
+                                    </NavLink> 
+                                </li>,
+
+                                <li key={0}>
+                                    <button 
+                                        className="boton-logout" 
+                                        onClick={this.logout} >
+                                            <p>Logout</p>
+                                    </button>
+                                </li>,
                             ])
                         : (
-                            <li><Link to={'/login'} className="nav-link">Login</Link></li>
+                            <li>
+                                <NavLink
+                                    to={'/login'}
+                                    className="nav-link">
+                                        <p>Login</p>
+                                </NavLink>
+                            </li>
                         )}
                     </ul>
                 </nav>

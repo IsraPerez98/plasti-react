@@ -1,0 +1,95 @@
+.barra-navegacion {
+    position: absolute;
+    /* width: 303px; */
+    width: 300px;
+    /*height: 941px;*/
+    /*height: 100%;*/
+    min-height: 100%;
+
+    background: #4C4C4C;
+    box-shadow: 8px 4px 4px rgba(0, 0, 0, 0.25);
+
+    .navbar .lista-navegacion {
+        list-style-type:none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            width: 100%;
+            height: 70px;
+            
+            //box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            //border-radius: 10px;
+
+            margin: 5px 0px;
+
+            .nav-link {
+                height: 100%;
+                color: transparent;
+                margin: 2px;
+                border: 0px;
+
+                p {
+                    margin: 0;
+                    border: 0;
+                    /*background-color: #3f3f3f;*/
+
+                    height: 100%;
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 25px;
+                    line-height: 29px;
+                    
+                    color: #FFFFFF;
+                }
+
+                
+            }
+
+            .nav-link.active {
+                color: #3f3f3f;
+                background-color: #3f3f3f;
+                p {
+                    background-color: #3f3f3f;
+                }
+                
+            }
+
+            .boton-logout {
+                height: 100%;
+                color: transparent;
+                background-color: transparent;
+                margin: 2px;
+                border: 0px;
+                cursor:pointer;
+
+                &:focus {
+                    outline: 0;
+                    outline-style:none;
+                    outline-width:0;
+                }
+
+                &:active {
+                    outline: 0;
+                    outline-style:none;
+                    outline-width:0;
+                }
+
+                p {
+                    margin: 0;
+                    border: 0;
+
+                    height: 100%;
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 25px;
+                    line-height: 29px;
+                    
+                    color: #FFFFFF;
+                }
+            }
+        }
+    }
+}
