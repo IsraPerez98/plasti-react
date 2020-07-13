@@ -5,7 +5,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 
 import BarraSuperior from './componentes/barra_superior';
-import BarraNavegacion from './componentes/navegacion';
+import BarraNavegacion from './componentes/barra_navegacion';
 
 import Login from './componentes/login';
 import Usuarios from './componentes/pestanas/usuarios/usuarios';
@@ -93,11 +93,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <BrowserRouter>
-            <BarraSuperior
-              estaLogeado={this.estaLogeado}
-            />
-            <BarraNavegacion estaLogeado={this.estaLogeado} />
+            <BarraSuperior/>
+            <BarraNavegacion/>
             {/* https://tylermcginnis.com/react-router-pass-props-to-components/ */}
+            {/*
             <Route 
               path="/login" 
               render={(props) => 
@@ -105,11 +104,11 @@ class App extends React.Component {
                   estaLogeado={this.estaLogeado} 
                 />}
             />
+            */}
             <Route 
               path="/usuarios" 
               render={(props) => 
                 <Usuarios
-                  estaLogeado={this.estaLogeado} 
                   ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
                 /> }
             />
@@ -117,7 +116,6 @@ class App extends React.Component {
               path="/productos" 
               render={(props) => 
                 <Productos
-                  estaLogeado={this.estaLogeado} 
                   ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
                 /> }
             />
@@ -125,7 +123,6 @@ class App extends React.Component {
               path="/clientes" 
               render={(props) => 
                 <Clientes
-                  estaLogeado={this.estaLogeado} 
                   ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
                 /> }
             />
@@ -133,7 +130,6 @@ class App extends React.Component {
               path="/proveedores" 
               render={(props) => 
                 <Proveedores
-                  estaLogeado={this.estaLogeado} 
                   ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
                 /> }
             />
@@ -141,7 +137,6 @@ class App extends React.Component {
               path="/compra" 
               render={(props) => 
                 <Compra
-                  estaLogeado={this.estaLogeado} 
                   ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
                 /> }
             />
@@ -149,7 +144,6 @@ class App extends React.Component {
               path="/venta" 
               render={(props) => 
                 <Venta
-                  estaLogeado={this.estaLogeado} 
                   ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
                 /> }
             />
@@ -157,7 +151,6 @@ class App extends React.Component {
               path="/registros" 
               render={(props) => 
                 <Registros
-                  estaLogeado={this.estaLogeado} 
                   ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
                 /> }
             />

@@ -6,9 +6,7 @@ import DialogoNuevoUsuario from './dialogo_nuevo_usuario';
 
 class Usuarios extends Component {
     // se le pasa this.props.ObtenerJWTAcceso()
-    // y this.props.EstaLogeado()
     // y this.props.ObtenerJWTAcceso()
-    // y this.props.estaLogeado()
 
     constructor(props) {
         super(props);
@@ -70,7 +68,6 @@ class Usuarios extends Component {
     }
 
     render() {
-        const esta_logeado = this.props.estaLogeado();
         const cargado = this.state.cargado;
         const error = this.state.error;
         const usuarios = this.state.datos_usuarios;
@@ -78,7 +75,6 @@ class Usuarios extends Component {
         //console.log("error: ", error);
         
         if(error) return( <div> ERROR {error} </div> );
-        if(!(esta_logeado)) return( <div> Debe ingresar con su cuenta para acceder a este panel. </div> );
         if(!(cargado)) return( <div> Cargando... </div> );
 
         //aqui almacenaremos el componente con la info de cada usuario

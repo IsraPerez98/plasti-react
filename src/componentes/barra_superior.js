@@ -4,10 +4,9 @@ import Collapsible from "react-collapsible";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
-import "../sass/barra-superior.scss";
+import "../sass/barra_superior.scss";
 
 class BarraSuperior extends Component {
-    // se le pasa this.props.estaLogeado
     constructor(props) {
         super(props);
 
@@ -50,9 +49,6 @@ class BarraSuperior extends Component {
     }
 
     render() {
-        const esta_logeado = this.props.estaLogeado();
-
-        if (!esta_logeado) return ""; // ordinaria la wea xdd
 
         const nombre_usuario = this.obtenerNombreUsuario();
 

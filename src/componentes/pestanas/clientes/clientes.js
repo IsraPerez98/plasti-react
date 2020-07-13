@@ -73,7 +73,6 @@ class Clientes extends Component {
     }
 
     render() {
-        const esta_logeado = this.props.estaLogeado();
         const cargado = this.state.cargado;
         const error = this.state.error;
         const clientes = this.state.datos_clientes;
@@ -81,7 +80,6 @@ class Clientes extends Component {
         //console.log("error: ", error);
         
         if(error) return( <div> ERROR {error} </div> );
-        if(!(esta_logeado)) return( <div> Debe ingresar con su cuenta para acceder a este panel. </div> );
         if(!(cargado)) return( <div> Cargando... </div> );
 
         let componentes_clientes = [];

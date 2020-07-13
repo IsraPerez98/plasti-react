@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 
-import "../sass/navegacion.scss";
+import "../sass/barra_navegacion.scss";
 
 class BarraNavegacion extends Component {
     constructor(props) {
@@ -36,11 +36,6 @@ class BarraNavegacion extends Component {
     }
 
     render() {
-        const esta_logeado = this.props.estaLogeado();
-
-        //console.log("esta logeado: ", esta_logeado);
-
-        if (!esta_logeado) return "";
 
         return (
             <div className="barra-navegacion">

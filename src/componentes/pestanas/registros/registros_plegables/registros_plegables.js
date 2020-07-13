@@ -6,7 +6,6 @@ import RegistroCompraPlegable from './registro_compra_plegable';
 
 class RegistrosPlegables extends Component {
     // se le pasa this.props.ObtenerJWTAcceso()
-    // y this.props.estaLogeado()
 
     constructor(props) {
         super(props);
@@ -129,14 +128,11 @@ class RegistrosPlegables extends Component {
     }
 
     render() {
-        const esta_logeado = this.props.estaLogeado();
         const cargado = this.state.registro_compra.cargado && this.state.registro_vende.cargado;
         const error = this.state.registro_compra.error || this.state.registro_vende.error;
         const registro_vende = this.state.registro_vende.datos;
         const registro_compra = this.state.registro_compra.datos;
  
-
-        if(!esta_logeado) return <div> Debe ingresar con su cuenta para acceder a este panel. </div>;
         if(error) return <div> ERROR: {error} </div>;
         if(!cargado) return <div> Cargando .... </div>;
 

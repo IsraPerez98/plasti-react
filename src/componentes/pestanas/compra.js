@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 class Compra extends Component {
-    // se le pasa this.props.estaLogeado()
-    // this.props.ObtenerJWTAcceso()
+    // se le pasa this.props.ObtenerJWTAcceso()
 
 
     constructor(props) {
@@ -208,7 +207,6 @@ class Compra extends Component {
     }
 
     render() {
-        const esta_logeado = this.props.estaLogeado();
         const cargado = this.state.productos.cargado && this.state.proveedores.cargado;
         const error = this.state.productos.error || this.state.proveedores.error;
         const productos = this.state.productos.datos;
@@ -216,7 +214,6 @@ class Compra extends Component {
         
         //console.log(this.state);
 
-        if(!esta_logeado) return <div> Debe ingresar con su cuenta para acceder a este panel. </div>;
         if(error) return <div> ERROR: {error} </div>;
         if(!cargado) return <div> Cargando .... </div>;
 

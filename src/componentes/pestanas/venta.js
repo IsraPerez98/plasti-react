@@ -207,7 +207,6 @@ class Venta extends Component {
     }
 
     render() {
-        const esta_logeado = this.props.estaLogeado();
         const cargado = this.state.productos.cargado && this.state.clientes.cargado;
         const error = this.state.productos.error || this.state.clientes.error;
         const productos = this.state.productos.datos;
@@ -215,7 +214,6 @@ class Venta extends Component {
         
         //console.log(this.state);
 
-        if(!esta_logeado) return <div> Debe ingresar con su cuenta para acceder a este panel. </div>;
         if(error) return <div> ERROR: {error} </div>;
         if(!cargado) return <div> Cargando .... </div>;
 

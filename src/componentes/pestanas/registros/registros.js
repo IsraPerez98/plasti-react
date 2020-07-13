@@ -4,7 +4,6 @@ import RegistrosPlegables from './registros_plegables/registros_plegables';
 
 class Registro extends Component {
     // se le pasa this.props.ObtenerJWTAcceso
-    // y this.props.estaLogeado
 
     constructor(props) {
         super(props);
@@ -14,7 +13,6 @@ class Registro extends Component {
         return(
             <RegistrosPlegables
                 ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}
-                estaLogeado={this.props.estaLogeado}
             />
         )
     }
