@@ -49,6 +49,7 @@ class BarraNavegacion extends Component {
                                 <li key={4}><Link to={'/proveedores'} className="nav-link">Proveedores</Link> </li>,
                                 <li key={5}><Link to={'/compra'} className="nav-link">Compra</Link> </li>,
                                 <li key={6}><Link to={'/venta'} className="nav-link">Venta</Link> </li>,
+                                <li key={7}><Link to={'/registros'} className="nav-link">Registros</Link> </li>,
                             ])
                         : (
                             <li><Link to={'/login'} className="nav-link">Login</Link></li>

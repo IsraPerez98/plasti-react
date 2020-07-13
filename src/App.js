@@ -5,14 +5,20 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 
 import BarraNavegacion from './componentes/navegacion';
+
 import Login from './componentes/login';
 import Usuarios from './componentes/pestanas/usuarios/usuarios';
 //import Registro from './componentes/registro';
+
 import Productos from './componentes/pestanas/productos/productos';
+
 import Clientes from './componentes/pestanas/clientes/clientes.js';
 import Proveedores from './componentes/pestanas/proveedores/proveedores.js';
+
 import Venta from './componentes/pestanas/venta';
 import Compra from './componentes/pestanas/compra';
+
+import Registros from './componentes/pestanas/registros/registros';
 
 class App extends React.Component {
 
@@ -131,6 +137,14 @@ class App extends React.Component {
               path="/venta" 
               render={(props) => 
                 <Venta
+                  estaLogeado={this.estaLogeado} 
+                  ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
+                /> }
+            />
+            <Route 
+              path="/registros" 
+              render={(props) => 
+                <Registros
                   estaLogeado={this.estaLogeado} 
                   ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
                 /> }
