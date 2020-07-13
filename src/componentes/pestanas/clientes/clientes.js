@@ -92,11 +92,15 @@ class Clientes extends Component {
             if(!(str_busqueda)) {
                 mostrar = true; // si no se esta buscando nada
             } else {
-                if(cliente.rut && cliente.rut.toLowerCase().includes(str_busqueda)) mostrar = true;
-                if(cliente.nombre && cliente.nombre.toLowerCase().includes(str_busqueda)) mostrar = true;
-                if(cliente.email && cliente.email.toLowerCase().includes(str_busqueda)) mostrar = true;
-                if(cliente.direccion && cliente.direccion.toLowerCase().includes(str_busqueda)) mostrar = true;
-                if(cliente.local && cliente.local.toLowerCase().includes(str_busqueda)) mostrar = true;
+                if(
+                    (cliente.rut && cliente.rut.toLowerCase().includes(str_busqueda)) ||
+                    (cliente.nombre && cliente.nombre.toLowerCase().includes(str_busqueda)) ||
+                    (cliente.email && cliente.email.toLowerCase().includes(str_busqueda)) ||
+                    (cliente.direccion && cliente.direccion.toLowerCase().includes(str_busqueda)) ||
+                    (cliente.local && cliente.local.toLowerCase().includes(str_busqueda))
+                ) {
+                    mostrar = true;
+                }
             }
             
 
