@@ -92,11 +92,15 @@ class Proveedores extends Component {
             if(!(str_busqueda)) {
                 mostrar = true; // si no se esta buscando nada
             } else {
-                if(proveedor.rut && proveedor.rut.toLowerCase().includes(str_busqueda)) mostrar = true;
-                else if(proveedor.nombre && proveedor.nombre.toLowerCase().includes(str_busqueda)) mostrar = true;
-                else if(proveedor.email && proveedor.email.toLowerCase().includes(str_busqueda)) mostrar = true;
-                else if(proveedor.direccion && proveedor.direccion.toLowerCase().includes(str_busqueda)) mostrar = true;
-                else if(proveedor.pagina_web && proveedor.pagina_web.toLowerCase().includes(str_busqueda)) mostrar = true;
+                if(
+                    (proveedor.rut && proveedor.rut.toLowerCase().includes(str_busqueda)) ||
+                    (proveedor.nombre && proveedor.nombre.toLowerCase().includes(str_busqueda)) ||
+                    (proveedor.email && proveedor.email.toLowerCase().includes(str_busqueda)) ||
+                    (proveedor.direccion && proveedor.direccion.toLowerCase().includes(str_busqueda)) ||
+                    (proveedor.pagina_web && proveedor.pagina_web.toLowerCase().includes(str_busqueda))
+                ) {
+                    mostrar = true;
+                }
             }
             
 
