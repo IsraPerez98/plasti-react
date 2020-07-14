@@ -4,6 +4,8 @@ import axios from 'axios';
 import BloqueProveedor from './bloque_proveedor';
 import DialogoNuevoProveedor from './dialogo_nuevo_proveedor';
 
+import '../../../sass/pestanas/proveedores.scss';
+
 class Proveedores extends Component {
     constructor(props) {
         super(props);
@@ -115,19 +117,28 @@ class Proveedores extends Component {
         } 
 
         return(
-            <div>
-                <label><h1>Proveedores</h1></label>
-                <div>
+            <div className="pestaña-proveedores">
+                <div className="parte-superior">
+                    <label className="titulo"><h1>Proveedores</h1></label>
                     <DialogoNuevoProveedor
                         ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}
                         obtenerProveedoresAPI={this.obtenerProveedoresAPI}
                     />
+                    <input type="text" id="busqueda" name="busqueda" className="busqueda" placeholder="Buscar Proveedor..." value={this.state.busqueda} onChange={e => this.actualizarEstado(e)} />
                 </div>
-                <div>
-                    <label>Busqueda:</label>
-                    <input type="text" id="busqueda" name="busqueda" value={this.state.busqueda} onChange={e => this.actualizarEstado(e)} />
+                <div className="cuadricula-proveedores">
+                    <ol className="titulo-proveedores">
+                        {/*<li>Código</li>*/}
+                        <li>RUT</li>
+                        <li>Nombre</li>
+                        <li>Telefono</li>
+                        <li>Email</li>
+                        <li>Direccion</li>
+                        <li>Pagina Web</li>
+                        <li></li>
+                    </ol>
+                    {componentes_proveedores}
                 </div>
-                {componentes_proveedores}
             </div>
         );
     }

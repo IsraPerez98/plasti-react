@@ -1,0 +1,49 @@
+@import '../variables';
+
+@import '../mixins';
+
+.pestaña-proveedores {
+    margin-left: $ancho-barra-lateral;
+    max-width: calc(100% - $ancho-barra-lateral);
+    width: calc(100% - $ancho-barra-lateral);
+    .parte-superior {
+        
+        @include parte-superior;
+
+        .div-nuevo-proveedor {
+            display: flex;
+
+            .boton-nuevo-proveedor {
+                @include boton-crear-nuevo;
+            }
+        }
+    }
+
+    .cuadricula-proveedores {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+
+        .titulo-proveedores {
+            @include titulos-cuadricula;
+        }
+
+        .div-datos-proveedores {
+            margin-top: 15px;
+            display: flex;
+            width: 100%;
+            .datos-proveedores {
+                @include datos-cuadricula;
+
+                .div-boton-eliminar {
+                    width: 120px;
+
+                    .boton-eliminar {
+                        @include boton-eliminar;
+                    }
+                }
+            }
+        }
+    }
+}

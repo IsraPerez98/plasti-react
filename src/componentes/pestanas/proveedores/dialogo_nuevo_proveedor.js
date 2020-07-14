@@ -86,8 +86,8 @@ class DialogoNuevoProveedor extends Component {
         ReactModal.setAppElement('#root');
 
         return(
-            <div>
-                <button type="button" onClick={this.abrirModal}>Nuevo Proveedor</button>
+            <div className="div-nuevo-proveedor">
+                <button type="button" className="boton-nuevo-proveedor" onClick={this.abrirModal}>Nuevo Proveedor</button>
                 <ReactModal contentLabel="Nuevo Proveedor" isOpen={this.state.modalAbierto}>
                     <form onSubmit={ e => this.enviarNuevoProveedor(e) }>
                         <label>RUT:</label><input type="text" name="rut" onChange={e => this.actualizarEstado(e)} value={this.state.rut}/>
