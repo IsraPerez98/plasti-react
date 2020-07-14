@@ -1,14 +1,13 @@
 @import './variables';
-$altura-barra: 50px;
 
 .espacio-barra-superior {
     width: 100%;
-    height: $altura-barra;
+    height: $altura-barra-superior;
     background-color: $color-celeste;
 }
 
 .barra-superior {
-    height: $altura-barra;
+    height: $altura-barra-superior;
     width: 100%;
     background-color: $color-celeste;
     display: flex;
@@ -19,7 +18,7 @@ $altura-barra: 50px;
     z-index: 1;
 
     .logo {
-        height: $altura-barra;
+        height: $altura-barra-superior;
     }
 
     .Collapsible {
@@ -29,7 +28,7 @@ $altura-barra: 50px;
 
         .boton-usuario {
             margin: 0;
-            height: $altura-barra;
+            height: $altura-barra-superior;
             &:hover {
                 cursor: pointer;
             }
@@ -41,7 +40,7 @@ $altura-barra: 50px;
                 font-style: normal;
                 font-weight: bold;
                 font-size: 25px;
-                line-height: $altura-barra;
+                line-height: $altura-barra-superior;
                 
                 color: #FFFFFF;
             }
@@ -50,6 +49,7 @@ $altura-barra: 50px;
         .menu-usuario {
             background-color: $color-celeste;
             width: 200px;
+            height: 120px;
 
             .boton-usuarios {
                 color: transparent;
@@ -73,7 +73,7 @@ $altura-barra: 50px;
             }
 
             .boton-logout {
-                height: 100%;
+                height: 50px;
                 color: transparent;
                 background-color: transparent;
                 margin: 2px;
