@@ -57,7 +57,7 @@ class DialogoEliminarCliente extends Component {
         return (
             <DialogoEliminar
                 funcionEliminar={this.eliminarCliente}
-                windowConfirm={`Desea eliminar al cliente:\n${datos_cliente._id}\n${datos_cliente.rut} \n${datos_cliente.nombre}`}
+                windowConfirm={`Desea eliminar al cliente:\n${datos_cliente.rut}\n${datos_cliente.nombre}\n${datos_cliente.email}`}
             />
         )
     }

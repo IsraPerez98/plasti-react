@@ -88,9 +88,9 @@ class DialogoNuevoCliente extends Component {
         ReactModal.setAppElement('#root');
 
         return(
-            <div>
-                <button type="button" onClick={this.abrirModal}>Nuevo Cliente</button>
-                <ReactModal contentLabel="hola" isOpen={this.state.modalAbierto}>
+            <div className="div-nuevo-cliente">
+                <button type="button" className="boton-nuevo-cliente" onClick={this.abrirModal}>Nuevo Cliente</button>
+                <ReactModal isOpen={this.state.modalAbierto}>
                     <form onSubmit={ e => this.enviarNuevoCliente(e) }>
                         <label>RUT:</label><input type="text" name="rut" onChange={e => this.actualizarEstado(e)} value={this.state.rut}/>
                         <label>Nombre:</label><input type="text" name="nombre" onChange={e => this.actualizarEstado(e)} value={this.state.nombre}/>

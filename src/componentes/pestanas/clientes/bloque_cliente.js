@@ -6,23 +6,15 @@ class BloqueCliente extends Component { // los bloques que componen cada cliente
 
         const datos_persona = this.props.datos_persona;
 
-        let datos_lista = [];
-
-        for ( const indice in datos_persona ) {
-            if(indice === "__v") continue; // weas de mongodb xd
-            if(indice === "_id") continue; // no vamos a mostrar el id tampoco
-
-            datos_lista.push(
-                <li key={indice}>
-                    {indice}:  {datos_persona[indice]}
-                </li>
-            )
-        }
-
         return (
-            <div>
-                <ol>
-                {datos_lista}
+            <div className="div-datos-clientes">
+                <ol className="datos-clientes">
+                    <li>{datos_persona.rut}</li>
+                    <li>{datos_persona.nombre}</li>
+                    <li>{datos_persona.telefono}</li>
+                    <li>{datos_persona.email}</li>
+                    <li>{datos_persona.direccion}</li>
+                    <li>{datos_persona.local}</li>
                 <DialogoEliminarCliente
                     datos_cliente = {datos_persona}
                     ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}

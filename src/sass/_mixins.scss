@@ -1,0 +1,119 @@
+@import './variables';
+
+@mixin parte-superior {
+    /* esta es la parte superior de algunas pestañas, incluyendo el titulo y el campo de busqueda */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 100px;
+    margin-right: 100px;
+    .titulo {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+
+        color: #000000;
+    }
+
+    .busqueda {
+        width: 300px;
+        height: 40px;
+        margin-top: auto;
+        margin-bottom: auto;
+
+        border: 1px solid #999999;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+    }
+}
+
+@mixin boton-crear-nuevo {
+    /* el boton para crear un nuevo objeto, se encuentra en la parte superior en algunas pestañas */
+    /* el div que lo contiene debe ser un flex */
+    cursor: pointer;
+
+    &:focus {
+        outline: 0;
+        outline-style: none;
+        outline-width: 0;
+    }
+
+    &:active {
+        outline: 0;
+        outline-style: none;
+        outline-width: 0;
+    }
+
+    height: 50px;
+    width: 150px;
+    margin-top: auto;
+    margin-bottom: auto;
+    vertical-align: middle;
+
+    background: $color-celeste;
+    border: 1px solid #4c81fd;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+    font-size: medium;
+
+    color: #ffffff;
+}
+
+@mixin titulos-cuadricula {
+    /* los titulos sobre una cuadricula indicando los titulos de los datos */
+    /* ej: "nombre", "material", etc */
+
+    list-style-type: none;
+
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0;
+
+    //width: 100%; se bugea por alguna razon
+
+    li {
+        width: 120px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        text-align: center;
+        font-size: medium;
+    }
+}
+
+@mixin datos-cuadricula {
+    /* los datos que van en la cuadricula */
+    /* ej: "botella", "plastico", etc */
+
+    @include titulos-cuadricula;
+
+    li {
+        font-weight: normal;
+    }
+
+    width: 100%;
+}
+
+@mixin boton-eliminar {
+    /* este boton es para eliminar algun objeto en la cuadricula */
+    background: $color-rojo-eliminar;
+    border: 1px solid #4c81fd;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+
+    font-family: Roboto;
+    font-style: normal;
+    text-align: center;
+    font-size: medium;
+
+    color: #ffffff;
+}

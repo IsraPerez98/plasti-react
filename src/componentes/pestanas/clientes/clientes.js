@@ -4,6 +4,8 @@ import axios from 'axios';
 import BloqueCliente from './bloque_cliente';
 import DialogoNuevoCliente from './dialogo_nuevo_cliente';
 
+import '../../../sass/pestanas/clientes.scss';
+
 class Clientes extends Component {
     constructor(props) {
         super(props);
@@ -115,19 +117,28 @@ class Clientes extends Component {
         } 
 
         return(
-            <div>
-                <label><h1>Clientes</h1></label>
-                <div>
+            <div className="pestaña-clientes">
+                <div className="parte-superior">
+                    <label className="titulo"><h1>Clientes</h1></label>
                     <DialogoNuevoCliente
                         ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}
                         recargarDatos={this.obtenerClientesAPI}
                     />
+                    <input type="text" className="busqueda" id="busqueda" name="busqueda" placeholder="Buscar Cliente..." value={this.state.busqueda} onChange={e => this.actualizar_estado(e)} />
                 </div>
-                <div>
-                    <label>Busqueda:</label>
-                    <input type="text" id="busqueda" name="busqueda" value={this.state.busqueda} onChange={e => this.actualizar_estado(e)} />
+                <div className="cuadricula-clientes">
+                    <ol className="titulo-clientes">
+                        {/*<li>Código</li>*/}
+                        <li>RUT</li>
+                        <li>Nombre</li>
+                        <li>Telefono</li>
+                        <li>Email</li>
+                        <li>Direccion</li>
+                        <li>Nombre del Local</li>
+                        <li></li>
+                    </ol>
+                    {componentes_clientes}
                 </div>
-                {componentes_clientes}
             </div>
         );
     }

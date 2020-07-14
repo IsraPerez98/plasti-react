@@ -3,7 +3,7 @@
 .barra-navegacion {
     position: absolute;
     /* width: 303px; */
-    width: 300px;
+    width: $ancho-barra-lateral;
     /*height: 941px;*/
     /*height: 100%;*/
     height: calc(100% - 50px ); // ni idea por que esto se bugea con $altura-barra-superior
