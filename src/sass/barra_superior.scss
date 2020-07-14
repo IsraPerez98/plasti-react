@@ -18,6 +18,10 @@ $altura-barra: 50px;
     left: 0;
     z-index: 1;
 
+    .logo {
+        height: $altura-barra;
+    }
+
     .Collapsible {
         margin-right: 20px;
         margin-left: auto;

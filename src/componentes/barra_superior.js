@@ -6,6 +6,8 @@ import axios from "axios";
 
 import "../sass/barra_superior.scss";
 
+import logo from '../img/logo.png';
+
 class BarraSuperior extends Component {
     constructor(props) {
         super(props);
@@ -56,7 +58,7 @@ class BarraSuperior extends Component {
             <div>
                 <div className="espacio-barra-superior"></div>
                 <div className="barra-superior">
-                    <div className="logo"></div>
+                    <img className="logo" src={logo}></img>
                     <Collapsible
                         trigger={
                             <div className="boton-usuario">
