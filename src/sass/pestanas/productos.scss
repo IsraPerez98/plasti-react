@@ -1,3 +1,5 @@
+@import "../variables";
+
 .pestaña-productos {
     margin-left: 300px;
     max-width: calc(100% - 300px);
@@ -40,7 +42,7 @@
                 margin-bottom: auto;
                 vertical-align: middle;
 
-                background: #57aae5;
+                background: $color-celeste;
                 border: 1px solid #4c81fd;
                 box-sizing: border-box;
                 box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -118,6 +120,21 @@
 
                 .div-boton-eliminar {
                     width: 120px;
+
+                    .boton-eliminar {
+                        background: $color-rojo-eliminar;
+                        border: 1px solid #4c81fd;
+                        box-sizing: border-box;
+                        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+                        border-radius: 2px;
+
+                        font-family: Roboto;
+                        font-style: normal;
+                        text-align: center;
+                        font-size: medium;
+
+                        color: #ffffff;
+                    }
                 }
             }
         }
