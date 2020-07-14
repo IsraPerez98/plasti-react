@@ -20,8 +20,8 @@ class DialogoEliminar extends Component {
     render() {
 
         return (
-            <div>
-                <button type="button" onClick={this.abrirDialogoEliminar}>Eliminar</button>
+            <div className="div-boton-eliminar">
+                <button className="boton-eliminar" type="button" onClick={this.abrirDialogoEliminar}>Eliminar</button>
             </div>
         )
     }

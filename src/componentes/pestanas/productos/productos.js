@@ -4,6 +4,8 @@ import axios from 'axios';
 import BloqueProducto from './bloque_producto';
 import DialogoNuevoProducto from './dialogo_nuevo_producto';
 
+import '../../../sass/pestanas/productos.scss';
+
 class Productos extends Component {
     constructor(props) {
         super(props);
@@ -113,17 +115,28 @@ class Productos extends Component {
         } 
 
         return(
-            <div>
-                <label><h1>Productos</h1></label>
-                <div>
-                    <label>Busqueda:</label>
-                    <input type="text" id="busqueda" name="busqueda" value={this.state.busqueda} onChange={e => this.actualizar_estado(e)} />
+            <div className="pestaña-productos">
+                <div className="parte-superior">
+                    <label className="titulo"><h1>Productos</h1></label>
                     <DialogoNuevoProducto
                         ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}
                         recargarDatos={this.obtenerProductosAPI}
                     />
+                    <input className="busqueda" type="text" id="busqueda" name="busqueda" placeholder="Buscar Producto..." value={this.state.busqueda} onChange={e => this.actualizar_estado(e)} />
                 </div>
-                {componentes_productos}
+                <div className="cuadricula-productos">
+                    <ol className="titulo-productos">
+                        {/*<li>Código</li>*/}
+                        <li>Nombre</li>
+                        <li>Material</li>
+                        <li>Precio Venta</li>
+                        <li>Contenido</li>
+                        <li>Unidad de Medida</li>
+                        <li>Cantidad</li>
+                        <li></li>
+                    </ol>
+                    {componentes_productos}
+                </div>
             </div>
         );
     }

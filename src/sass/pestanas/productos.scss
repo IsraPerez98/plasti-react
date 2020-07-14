@@ -1,0 +1,125 @@
+.pestaña-productos {
+    margin-left: 300px;
+    max-width: calc(100% - 300px);
+    width: calc(100% - 300px);
+    .parte-superior {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: 100px;
+        margin-right: 100px;
+        .titulo {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+
+            color: #000000;
+        }
+
+        .div-nuevo-producto {
+            display: flex;
+
+            .boton-nuevo-producto {
+                cursor: pointer;
+
+                &:focus {
+                    outline: 0;
+                    outline-style: none;
+                    outline-width: 0;
+                }
+
+                &:active {
+                    outline: 0;
+                    outline-style: none;
+                    outline-width: 0;
+                }
+
+                height: 50px;
+                width: 150px;
+                margin-top: auto;
+                margin-bottom: auto;
+                vertical-align: middle;
+
+                background: #57aae5;
+                border: 1px solid #4c81fd;
+                box-sizing: border-box;
+                box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 10px;
+
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: bold;
+                text-align: center;
+                font-size: medium;
+
+                color: #ffffff;
+            }
+        }
+
+        .busqueda {
+            width: 300px;
+            height: 40px;
+            margin-top: auto;
+            margin-bottom: auto;
+
+            border: 1px solid #999999;
+            box-sizing: border-box;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
+    }
+
+    .cuadricula-productos {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+
+        .titulo-productos {
+            list-style-type: none;
+
+            display: inline-flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin: 0;
+
+            li {
+                width: 120px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: bold;
+                text-align: center;
+                font-size: medium;
+            }
+        }
+
+        .div-datos-productos {
+            margin-top: 15px;
+            display: flex;
+            width: 100%;
+            .datos-productos {
+                list-style-type: none;
+                width: 100%;
+
+                display: inline-flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                margin: 0;
+
+                li {
+                    list-style-type: none;
+                    width: 120px;
+
+                    font-family: Roboto;
+                    font-style: normal;
+                    text-align: center;
+                    font-size: medium;
+                }
+
+                .div-boton-eliminar {
+                    width: 120px;
+                }
+            }
+        }
+    }
+}

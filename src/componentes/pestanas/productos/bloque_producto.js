@@ -7,26 +7,16 @@ class BloqueProducto extends Component { // los bloques que componen cada produc
 
         const datos_producto = this.props.datos_producto;
 
-        
-        let datos_lista = [];
-
-        for ( const indice in datos_producto ) {
-            if(indice === "__v") continue; // weas de mongodb xd
-            if(indice === "_id") continue; // no vamos a mostrar el id tampoco
-
-
-            datos_lista.push(
-                <li key={indice}>
-                    {indice}:  {datos_producto[indice]}
-                </li>
-            )
-        }
-
 
         return (
-            <div>
-                <ol>
-                    {datos_lista}
+            <div className="div-datos-productos">
+                <ol className="datos-productos">
+                    <li>{datos_producto.nombre}</li>
+                    <li>{datos_producto.material}</li>
+                    <li>{datos_producto.precio_venta}</li>
+                    <li>{datos_producto.contenido}</li>
+                    <li>{datos_producto.unidad_medida}</li>
+                    <li>{datos_producto.cantidad}</li>
                     <DialogoEliminarProducto
                         ObtenerJWTAcceso={this.props.ObtenerJWTAcceso}
                         recargarDatos={this.props.recargarDatos}

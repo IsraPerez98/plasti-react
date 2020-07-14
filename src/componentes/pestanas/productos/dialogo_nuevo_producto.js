@@ -92,8 +92,8 @@ class DialogoNuevoProducto extends Component {
         ReactModal.setAppElement('#root');
 
         return(
-            <div>
-                <button type="button" onClick={this.abrirModal}>Nuevo Producto</button>
+            <div className="div-nuevo-producto">
+                <button type="button" className="boton-nuevo-producto" onClick={this.abrirModal}>Nuevo Producto</button>
                 <ReactModal contentLabel="Nuevo Producto" isOpen={this.state.modalAbierto}>
                     <form onSubmit={ e => this.enviarNuevoProducto(e) }>
                         <label>Nombre del Producto:</label><input type="text" name="nombre" onChange={e => this.actualizarEstado(e)} value={this.state.nombre}/>
