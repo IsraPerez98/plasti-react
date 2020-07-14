@@ -54,7 +54,7 @@ class DialogoEliminarProducto extends Component {
         return (
             <DialogoEliminar
                 funcionEliminar={this.eliminarProducto}
-                windowConfirm={`Desea eliminar el producto:\n${datos_producto._id}\n${datos_producto.nombre}`}
+                windowConfirm={`Desea eliminar el producto:\n${datos_producto.nombre}`}
             />
         )
     }
