@@ -1,4 +1,20 @@
-@import './variables';
+@import "./variables";
+
+@mixin margen-izquierda {
+    /* el margen a la izquerda para las pestañas, por el espacio de la barra de navegacion */
+    margin-left: $ancho-barra-lateral;
+    max-width: calc(100% - $ancho-barra-lateral);
+    width: calc(100% - $ancho-barra-lateral);
+}
+
+@mixin texto-titulo {
+    /* el titulo que va en la pestaña arriba */
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+
+    color: #000000;
+}
 
 @mixin parte-superior {
     /* esta es la parte superior de algunas pestañas, incluyendo el titulo y el campo de busqueda */
@@ -8,11 +24,7 @@
     margin-left: 100px;
     margin-right: 100px;
     .titulo {
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: bold;
-
-        color: #000000;
+        @include texto-titulo;
     }
 
     .busqueda {
@@ -116,4 +128,18 @@
     font-size: medium;
 
     color: #ffffff;
+}
+
+@mixin boton-verde {
+    /*igual que el boton eliminar pero verde */
+    @include boton-eliminar;
+
+    background: $color-verde;
+}
+
+@mixin cuadro-input {
+    /* el cuadro que se usa para el input de texto, select, etc */
+    border: 1px solid #999999;
+    box-sizing: border-box;
+    border-radius: 10px;
 }

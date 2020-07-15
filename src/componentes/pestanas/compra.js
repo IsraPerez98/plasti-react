@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+import '../../sass/pestanas/compra.scss';
+
 class Compra extends Component {
     // se le pasa this.props.ObtenerJWTAcceso()
-
 
     constructor(props) {
         super(props);
@@ -196,7 +197,9 @@ class Compra extends Component {
         if((evento.target.name === "producto" || evento.target.name === "cantidad") && !isNaN(dato_a_actualizar.cantidad)  ) {
             const producto = this.buscarProductoID(dato_a_actualizar.producto); //obtenemos el producto como objeto
 
-            dato_a_actualizar.precio = dato_a_actualizar.cantidad * producto.precio_venta;
+            if(producto && producto.precio_venta) {
+                dato_a_actualizar.precio = dato_a_actualizar.cantidad * producto.precio_venta;
+            }
         }
         
         this.setState({ // llamamos a setState para actualizar
@@ -242,36 +245,47 @@ class Compra extends Component {
             
             precio_total = precio_total + ( parseInt(item.precio) || 0 );
 
-            opciones.push(<div>
-                <label>Producto:</label>
-                    <select name="producto" value={item.producto} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}>
+            opciones.push(<li>
+                    <select name="producto" className="select-producto" value={item.producto} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}>
                         <option value="" disabled>Seleccione un producto ...</option>
                         {productos_opciones}
                     </select> 
-                    <input name="cantidad" type="number" value={item.cantidad} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}></input>
-                    <input name="precio" type="number" value={item.precio} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}></input>
-                    <button type="button" onClick={e => this.eliminarProducto(i)}>-</button>
-            </div>);
+                    <input name="cantidad" className="input-cantidad" placeholder="Cantidad" type="number" value={item.cantidad} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}></input>
+                    <input name="precio" className="input-precio" placeholder="Precio" type="number" value={item.precio} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}></input>
+                    <button type="button" className="boton-eliminar-producto" onClick={e => this.eliminarProducto(i)}>Eliminar</button>
+            </li>);
         }
 
 
         return(
-            <div>
-                <form onSubmit={ this.enviar }>
-                <div>
-                    {opciones}
-                    <button type="button" onClick={this.agregarNuevoProducto}>+</button>
+            <div className="pestaña-compra">
+                <div className="parte-superior">
+                    <label className="titulo"><h1>Compra</h1></label>
                 </div>
-                <div>
-                    <label>Proveedor:</label>
-                    <select id="proveedor" name="proveedor" value={this.state.proveedor} onChange={e => this.actualizar_estado(e)}>
+                <form onSubmit={ this.enviar }>
+                    <div className="div-seleccion-productos">
+                        <label className="texto-productos">Productos:</label>
+                        <ol className="seleccion-productos">
+                            <li className="titulo-campos">
+                                <label className="label-producto">Producto</label>
+                                <label className="label-cantidad">Cantidad</label>
+                                <label className="label-precio">Precio</label>
+                                <label className="label-vacio"></label>
+                            </li>
+                            {opciones}
+                        </ol>
+                        <button type="button" className="boton-nuevo-producto" onClick={this.agregarNuevoProducto}>Agregar Producto</button>
+                    </div>
+                <div className="div-seleccion-proveedor">
+                    <label className="texto-proveedor">Proveedor:</label>
+                    <select id="proveedor" className="select-proveedor" name="proveedor" value={this.state.proveedor} onChange={e => this.actualizar_estado(e)}>
                         <option value="" disabled>Seleccione un proveedor ...</option>
                         {proveedores_opciones}
                     </select>
                 </div>
-                <div>
-                    <label>Total: </label>
-                    <label>${precio_total}</label>
+                <div className="div-precio-total">
+                    <label className="label-total">Total: </label>
+                    <label className="unidad-total">${precio_total.toLocaleString('es')}</label>
                 </div>
                 <button type="submit">Finalizar</button>
                 </form> 

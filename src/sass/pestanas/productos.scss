@@ -3,9 +3,8 @@
 @import '../mixins';
 
 .pestaña-productos {
-    margin-left: $ancho-barra-lateral;
-    max-width: calc(100% - $ancho-barra-lateral);
-    width: calc(100% - $ancho-barra-lateral);
+    @include margen-izquierda;
+    
     .parte-superior {
         
         @include parte-superior;
