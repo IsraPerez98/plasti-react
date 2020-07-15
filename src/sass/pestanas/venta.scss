@@ -1,0 +1,47 @@
+@import "../variables";
+
+@import "../mixins";
+
+@import "transacciones";
+
+.pestaña-venta {
+    @include margen-izquierda;
+
+    .parte-superior {
+        @include parte-superior;
+        justify-content: center;
+    }
+
+    .div-seleccion-productos {
+        @include div-seleccion-productos;
+    }
+
+    .div-seleccion-cliente {
+        @include bloque-div;
+
+        justify-content: space-evenly;
+
+        .texto-cliente {
+            width: auto;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .select-cliente {
+            @include cuadro-input;
+        }
+    }
+
+    .div-precio-total {
+        @include div-precio-total;
+        .unidad-total {
+            color: $color-verde;
+        }
+    }
+
+    .boton-finalizar {
+        @include boton-finalizar;
+    }
+}

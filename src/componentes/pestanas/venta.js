@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+import '../../sass/pestanas/venta.scss';
+
 class Venta extends Component {
     constructor(props) {
         super(props);
@@ -243,38 +245,49 @@ class Venta extends Component {
             
             precio_total = precio_total + ( parseInt(item.precio) || 0 );
 
-            opciones.push(<div>
-                <label>Producto:</label>
-                    <select name="producto" value={item.producto} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}>
+            opciones.push(<li>
+                    <select name="producto" className="select-producto" value={item.producto} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}>
                         <option value="" disabled>Seleccione un producto ...</option>
                         {productos_opciones}
                     </select> 
-                    <input name="cantidad" type="number" value={item.cantidad} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}></input>
-                    <input name="precio" type="number" value={item.precio} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}></input>
-                    <button type="button" onClick={e => this.eliminarProducto(i)}>-</button>
-            </div>);
+                    <input name="cantidad" className="input-cantidad" placeholder="Cantidad" type="number" value={item.cantidad} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}></input>
+                    <input name="precio" className="input-precio" placeholder="Precio" type="number" value={item.precio} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}></input>
+                    <button type="button" className="boton-eliminar-producto" onClick={e => this.eliminarProducto(i)}>Eliminar</button>
+            </li>);
         }
 
 
         return(
-            <div>
+            <div className="pestaña-venta">
+                <div className="parte-superior">
+                    <label className="titulo"><h1>Venta</h1></label>
+                </div>
                 <form onSubmit={ this.enviar }>
-                <div>
-                    {opciones}
-                    <button type="button" onClick={this.agregarNuevoProducto}>+</button>
-                </div>
-                <div>
-                    <label>Cliente:</label>
-                    <select id="cliente" name="cliente" value={this.state.cliente} onChange={e => this.actualizar_estado(e)}>
-                        <option value="" disabled>Seleccione un cliente ...</option>
-                        {clientes_opciones}
-                    </select>
-                </div>
-                <div>
-                    <label>Total: </label>
-                    <label>${precio_total}</label>
-                </div>
-                <button type="submit">Finalizar</button>
+                    <div className="div-seleccion-productos">
+                        <label className="texto-productos">Productos:</label>
+                        <ol className="seleccion-productos">
+                            <li className="titulo-campos">
+                                <label className="label-producto">Producto</label>
+                                <label className="label-cantidad">Cantidad</label>
+                                <label className="label-precio">Precio</label>
+                                <label className="label-vacio"></label>
+                            </li>
+                            {opciones}
+                        </ol>
+                        <button type="button" className="boton-nuevo-producto" onClick={this.agregarNuevoProducto}>Agregar Producto</button>
+                    </div>
+                    <div className="div-seleccion-cliente">
+                        <label className="texto-cliente">Cliente:</label>
+                        <select id="cliente" className="select-cliente" name="cliente" value={this.state.cliente} onChange={e => this.actualizar_estado(e)}>
+                            <option value="" disabled>Seleccione un cliente ...</option>
+                            {clientes_opciones}
+                        </select>
+                    </div>
+                    <div className="div-precio-total">
+                        <label className="label-total">Total: </label>
+                        <label className="unidad-total">${precio_total.toLocaleString('es')}</label>
+                    </div>
+                    <button type="submit" className="boton-finalizar">Finalizar</button>
                 </form> 
             </div>
         )
