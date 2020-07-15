@@ -276,18 +276,18 @@ class Compra extends Component {
                         </ol>
                         <button type="button" className="boton-nuevo-producto" onClick={this.agregarNuevoProducto}>Agregar Producto</button>
                     </div>
-                <div className="div-seleccion-proveedor">
-                    <label className="texto-proveedor">Proveedor:</label>
-                    <select id="proveedor" className="select-proveedor" name="proveedor" value={this.state.proveedor} onChange={e => this.actualizar_estado(e)}>
-                        <option value="" disabled>Seleccione un proveedor ...</option>
-                        {proveedores_opciones}
-                    </select>
-                </div>
-                <div className="div-precio-total">
-                    <label className="label-total">Total: </label>
-                    <label className="unidad-total">${precio_total.toLocaleString('es')}</label>
-                </div>
-                <button type="submit">Finalizar</button>
+                    <div className="div-seleccion-proveedor">
+                        <label className="texto-proveedor">Proveedor:</label>
+                        <select id="proveedor" className="select-proveedor" name="proveedor" value={this.state.proveedor} onChange={e => this.actualizar_estado(e)}>
+                            <option value="" disabled>Seleccione un proveedor ...</option>
+                            {proveedores_opciones}
+                        </select>
+                    </div>
+                    <div className="div-precio-total">
+                        <label className="label-total">Total: </label>
+                        <label className="unidad-total">${precio_total.toLocaleString('es')}</label>
+                    </div>
+                    <button type="submit" className="boton-finalizar">Finalizar</button>
                 </form> 
             </div>
         )
