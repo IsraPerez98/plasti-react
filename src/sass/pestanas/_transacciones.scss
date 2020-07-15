@@ -1,0 +1,156 @@
+
+@import "../variables";
+
+@import "../mixins";
+
+$width-campo-producto: 200px;
+$width-campo-cantidad: 100px;
+$width-campo-precio: 100px;
+$width-boton-eliminar: 70px;
+
+@mixin bloque-div {
+    /*los bloques que componen las secciones de seleccion de productos, seleccion de proveedor y el precio total */
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 80%;
+
+    margin-bottom: 30px;
+}
+
+@mixin div-seleccion-productos {
+    /* el campo central que incluye la seleccion de productos, cantidades, etc */
+    @include bloque-div;
+    justify-content: space-between;
+
+    .texto-productos {
+        width: auto;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    .seleccion-productos {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+
+        display: inline-flex;
+        flex-direction: column;
+
+        width: 500px;
+        //justify-content: space-between;
+
+        .titulo-campos {
+            margin-top: 0;
+            margin-bottom: 0;
+            display: inline-flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            label {
+                text-align: center;
+                font-family: Roboto;
+                font-style: normal;
+                font-size: 16px;
+            }
+
+            .label-producto {
+                width: $width-campo-producto;
+            }
+
+            .label-cantidad {
+                width: $width-campo-cantidad;
+            }
+
+            .label-precio {
+                width: $width-campo-precio;
+            }
+
+            .label-vacio {
+                width: $width-boton-eliminar;
+            }
+        }
+
+        li {
+            margin-top: 5px;
+            margin-bottom: 5px;
+
+            display: inline-flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .select-producto {
+                @include cuadro-input;
+                width: $width-campo-producto;
+            }
+
+            .input-cantidad {
+                @include cuadro-input;
+                width: $width-campo-cantidad;
+            }
+
+            .input-precio {
+                @include cuadro-input;
+                width: $width-campo-precio;
+            }
+
+            .boton-eliminar-producto {
+                @include boton-eliminar;
+                width: $width-boton-eliminar;
+            }
+        }
+    }
+
+    .boton-nuevo-producto {
+        @include boton-verde;
+        width: 100px;
+        height: 50px;
+    }
+}
+
+@mixin div-precio-total {
+    /* el div abajo de todo, con el total de la venta/compra */
+    @include bloque-div;
+
+    width: 100%;
+    
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    
+    .unidad-total {
+        margin-left: 10px;
+        //color: $color-rojo-eliminar;
+    }
+}
+
+@mixin boton-finalizar {
+    /* boton para finalizar la compra/venta */
+    display: inline;
+    background: #0038FF;
+    border: 1px solid #999999;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    width: 150px;
+    height: 60px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    
+    color: #FFFFFF;
+    
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
