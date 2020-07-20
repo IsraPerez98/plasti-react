@@ -11,6 +11,8 @@ import Login from './componentes/login';
 import Usuarios from './componentes/pestanas/usuarios/usuarios';
 //import Registro from './componentes/registro';
 
+import Inicio from './componentes/pestanas/inicio/inicio';
+
 import Productos from './componentes/pestanas/productos/productos';
 
 import Clientes from './componentes/pestanas/clientes/clientes.js';
@@ -109,6 +111,13 @@ class App extends React.Component {
               path="/usuarios" 
               render={(props) => 
                 <Usuarios
+                  ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
+                /> }
+            />
+            <Route 
+              exact path="/" 
+              render={(props) => 
+                <Inicio
                   ObtenerJWTAcceso={this.ObtenerJWTAcceso} 
                 /> }
             />

@@ -1,0 +1,76 @@
+@import "../variables";
+@import "../mixins";
+
+$ancho-datos-productos: 200px;
+
+.pestaña-inicio {
+    @include margen-izquierda;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .parte-superior {
+        @include parte-superior;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .div-alertas {
+        width: 50%;
+        .titulo-alertas {
+            margin-top: 10px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+
+            color: #ff0000;
+        }
+
+        .div-stock-bajo {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+
+            .titulo-stock-bajo {
+                margin-bottom: 10px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 24px;
+
+                color: #000000;
+            }
+
+            .titulos-cuadriculas-productos {
+                @include titulos-cuadricula;
+
+                li {
+                    width: $ancho-datos-productos;
+                }
+            }
+
+            .lista-productos {
+                display: flex;
+                list-style-type: none;
+                flex-direction: column;
+                padding: 0;
+                margin: 0;
+
+                .div-producto-stock-bajo {
+                    margin-top: 15px;
+                    display: flex;
+                    width: 100%;
+
+                    .datos-producto {
+                        @include datos-cuadricula;
+        
+                        li {
+                            width: $ancho-datos-productos;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
