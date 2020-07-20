@@ -64,13 +64,27 @@ $ancho-datos-productos: 200px;
 
                     .datos-producto {
                         @include datos-cuadricula;
-        
+
                         li {
                             width: $ancho-datos-productos;
                         }
                     }
                 }
             }
+        }
+    }
+
+    .grafico-ventas {
+        width: 400px;
+        height: 300px;
+
+        .titulo-grafico {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+
+            color: #000000;
         }
     }
 }
