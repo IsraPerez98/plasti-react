@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+import '../sass/pestanas/login.scss';
+
+import logo from '../img/logo.png';
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -50,11 +54,20 @@ class Login extends Component {
                 <div>El Usuario ya ha ingresado</div>
             )
             : (
-                <div>
-                    <form onSubmit={ e => this.submit(e) }>
-                        <label>usuario:</label><input type="text" name="usuario" onChange={e => this.change(e)} value={this.state.usuario}/>
-                        <label>contraseña:</label><input type="password" name="clave" onChange={e => this.change(e)} value={this.state.clave}/>
-                        <button type="submit">Entrar</button>
+                <div className="pestaña-login">
+                    <div className="espacio-barra-superior">
+                        <div className="barra-superior">
+                            <img className="logo" src={logo}></img>
+                        </div>
+                    </div>
+                    <form onSubmit={ e => this.submit(e) } className="cuadro-login">
+                        <div className="campos">
+                            <label>Usuario</label>
+                            <input type="text" name="usuario" placeholder="Usuario" onChange={e => this.change(e)} value={this.state.usuario}/>
+                            <label>Contraseña</label>
+                            <input type="password" name="clave" placeholder="Contraseña" onChange={e => this.change(e)} value={this.state.clave}/>
+                        </div>
+                        <button className="boton-acceder" type="submit">Acceder</button>
                     </form>
                 </div>
             )}
