@@ -229,7 +229,7 @@ class Compra extends Component {
         let productos_opciones = []; // las opciones de productos
 
         for (const [indice, producto] of productos.entries() ) { // por todos los productos que envie la api los ponemos como opcion
-            productos_opciones.push(<option value={producto["_id"]}>{producto.nombre}</option>);
+            productos_opciones.push(<option value={producto["_id"]}>{`${producto.nombre} - ${producto.material}`}</option>);
         }
 
         let opciones = []; // las opciones respecto a los productos, incluyendo multiples de ellos
