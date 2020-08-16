@@ -41,13 +41,20 @@ class RegistroVentaPlegable extends Component {
 
 
         return(
-            <Collapsible trigger={`Venta hecha el dia ${fecha_texto} al cliente ${cliente.nombre} `}>
-                <ol>
-                    <li>Fecha: {fecha_texto}</li>
-                    <li>Cliente: {cliente.nombre}</li>
-                    <li><ol>{productos_plegables}</ol></li>
-                    <li>Precio Total: {precio_total}</li>
-                </ol>
+            <Collapsible className="registro-compra-plegable" 
+                trigger={
+                    <div className="registro-trigger">
+                        Venta hecha el dia {fecha_texto} al cliente {cliente.nombre} ⌄
+                    </div>
+            }>
+                <div className="registro-interior">
+                    <ol>
+                        <li>Fecha: {fecha_texto}</li>
+                        <li>Cliente: {cliente.nombre}</li>
+                        <li><ol className="productos-plegables">{productos_plegables}</ol></li>
+                        <li>Precio Total: {precio_total}</li>
+                    </ol>
+                </div>
             </Collapsible>
         )
     }

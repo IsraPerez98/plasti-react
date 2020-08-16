@@ -168,7 +168,7 @@ class RegistrosPlegables extends Component {
         }
         
         return(
-            <div>
+            <div className="registros-plegables">
                 {plegables_transacciones}
             </div>
         )
