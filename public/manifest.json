@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Plasti - Panel",
+  "name": "Panel de registros de la empresa Plasti",
   "icons": [
     {
       "src": "favicon.ico",
