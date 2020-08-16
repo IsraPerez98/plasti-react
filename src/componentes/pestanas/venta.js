@@ -250,8 +250,8 @@ class Venta extends Component {
                         <option value="" disabled>Seleccione un producto ...</option>
                         {productos_opciones}
                     </select> 
-                    <input name="cantidad" className="input-cantidad" placeholder="Cantidad" type="number" value={item.cantidad} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}></input>
-                    <input name="precio" className="input-precio" placeholder="Precio" type="number" value={item.precio} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}></input>
+                    <input name="cantidad" min="0" className="input-cantidad" placeholder="Cantidad" type="number" value={item.cantidad} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}></input>
+                    <input name="precio" min="0" className="input-precio" placeholder="Precio" type="number" value={item.precio} onChange={e => this.actualizarEstadoOpcionesProductos(i,e)}></input>
                     <button type="button" className="boton-eliminar-producto" onClick={e => this.eliminarProducto(i)}>Eliminar</button>
             </li>);
         }
