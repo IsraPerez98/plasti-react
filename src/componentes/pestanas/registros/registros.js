@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 import RegistrosPlegables from './registros_plegables/registros_plegables';
+import BloquesDinero from './bloques-dinero';
 
 import '../../../sass/pestanas/registros.scss';
 
@@ -123,20 +124,14 @@ class Registro extends Component {
 
         return(
             <div className="pestaña-registros">
-                <div className="registros-dinero">
-                   <div className="cuadro-dinero-mes">
-
-                    </div> 
-                    <div className="cuadro-dinero-año">
-
-                    </div>
-                </div>
-                <div className="registros-plegables">
-                    <RegistrosPlegables
-                        registro_compra={registro_compra}
-                        registro_vende={registro_vende}
-                    />
-                </div>
+                <BloquesDinero
+                    registro_compra={registro_compra}
+                    registro_vende={registro_vende}
+                />
+                <RegistrosPlegables
+                    registro_compra={registro_compra}
+                    registro_vende={registro_vende}
+                />
             </div>
         )
     }

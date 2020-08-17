@@ -2,11 +2,36 @@
 
 @import "../mixins";
 
+@mixin cuadro-dinero {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 24px;
+    font-family: Roboto;
+    font-style: normal;
+    text-align: center;
+}
+
 .pestaña-registros {
     @include margen-izquierda;
     margin-top: 40px;
 
+    .registros-dinero {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+        .cuadro-dinero-año {
+            @include cuadro-dinero;
+        }
+        .cuadro-dinero-mes {
+            @include cuadro-dinero;
+        }
+
+    }
+
     .registros-plegables {
+        margin-top: 20px;
         display: flex;
         flex-direction: column;
         align-content: center;
